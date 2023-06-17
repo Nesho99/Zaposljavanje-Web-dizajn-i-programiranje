@@ -1,0 +1,4 @@
+AuthName "Zastita 1"
+AuthType Basic
+AuthUserFile \.htppaswd
+Require valid-user

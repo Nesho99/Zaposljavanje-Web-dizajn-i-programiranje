@@ -30,8 +30,12 @@ class QueryBuilder {
 
     public function set($values) {
         $set = [];
-        foreach($values as $key => $value) {
-            $set[] = "$key = '$value'";
+        foreach ($values as $key => $value) {
+            if ($value === null) {
+                $set[] = "$key = NULL";
+            } else {
+                $set[] = "$key = '$value'";
+            }
         }
         $this->query .= ' SET ' . implode(', ', $set);
         return $this;

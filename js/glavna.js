@@ -1,5 +1,23 @@
 const trenutnoImeDatoteke = window.location.pathname.split('/').pop();
 
+function popuniHTMLSelekciju(selekcijaId, podaci, ključniStupac, vrijednosniStupac) {
+    const selekcijaElement = document.getElementById(selekcijaId);
+
+    // Iteriraj kroz sve objekte u JSON nizu
+    for (let i = 0; i < podaci.length; i++) {
+        let stavka = podaci[i];
+        let kljuc = stavka[kljucniStupac];
+        let vrijednost = stavka[vrijednosniStupac];
+
+        // Kreiraj novi element opcije i dodaj ga u selekcijski element
+        let opcijaElement = document.createElement('option');
+        opcijaElement.value = vrijednost;
+        opcijaElement.textContent = kljuc;
+        selekcijaElement.appendChild(opcijaElement);
+    }
+}
+
+
 function jeKolacicPostavljen(imeKolacica) {
     var kolacici = document.cookie.split(';');
     for (var i = 0; i < kolacici.length; i++) {
@@ -186,7 +204,7 @@ $(document).ready(function () {
     if (trenutnoImeDatoteke == "poduzeca.php") {
         $(".poduzeca").addClass("aktivna");
 
-        
+        //Tablica
         fetch('/api/poduzeca/dohvati.php')
             .then(odgovor => odgovor.json())
             .then(podaci => {
@@ -196,10 +214,11 @@ $(document).ready(function () {
                     { naziv: "Ime", svojstvo: "ime" },
                     { naziv: "Radno vrijeme od", svojstvo: "radnoVrijemeOd" },
                     { naziv: "Radno vrijeme do", svojstvo: "radnoVrijemeDo" },
-                    { naziv: "Moderator", svojstvo: "moderator" },
-                    { naziv: "Opis", svojstvo: "opis" }
-                  ];
-                const tablicaPoduzeca = new Tablica(zaglavlja,"#tablicaPoduzeca");
+                    { naziv: "Opis", svojstvo: "opis" },
+                    { naziv: "Moderator", svojstvo: "moderator" }
+
+                ];
+                const tablicaPoduzeca = new Tablica(zaglavlja, "#tablicaPoduzeca");
                 tablicaPoduzeca.dohvatiPodatke(podaci);
                 tablicaPoduzeca.ispisTablice();
             })
@@ -207,6 +226,7 @@ $(document).ready(function () {
                 // Obradite eventualne greške koje se pojave tokom zahtjeva
                 console.error(greska);
             });
+
 
 
 

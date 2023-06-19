@@ -14,7 +14,7 @@ if($korisnik== null or $korisnik["uloga"] != "admin") {
     $rez = new stdClass;
     $rez->uspijeh = false;
     $rez->poruka="Nedovoljno privilegija";
-    die($rez);
+    die(json_encode($rez));
 }
 $id= $_GET["id"];
 

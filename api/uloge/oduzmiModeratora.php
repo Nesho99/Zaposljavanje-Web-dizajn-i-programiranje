@@ -23,6 +23,11 @@ $baza->spojiDB();
 $qb= new QueryBuilder();
 $upit=$qb->update('korisnik')->set(['uloga'=> ''])->where('id='.$id)->getQuery();
 $baza->updateDB($upit);
+$qb= new QueryBuilder();
+
+$upit=$qb->update('poduzece')->set(['moderator'=> null])->where('moderator='.$id)->getQuery();
+print_r($upit);
+$baza->updateDB($upit);
 $baza->zatvoriDB();
 
 $rez = new  stdClass;

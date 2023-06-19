@@ -3,35 +3,35 @@ const trenutnoImeDatoteke = window.location.pathname.split('/').pop();
 function jeKolacicPostavljen(imeKolacica) {
     var kolacici = document.cookie.split(';');
     for (var i = 0; i < kolacici.length; i++) {
-      var kolacic = kolacici[i].trim();
-      if (kolacic.indexOf(imeKolacica + '=') === 0) {
-        // Kolačić je postavljen
-        return true;
-      }
+        var kolacic = kolacici[i].trim();
+        if (kolacic.indexOf(imeKolacica + '=') === 0) {
+            // Kolačić je postavljen
+            return true;
+        }
     }
     // Kolačić nije postavljen
     return false;
-  }
+}
 
-  function dohvatiKolacic(imeKolacica) {
+function dohvatiKolacic(imeKolacica) {
     var ime = imeKolacica + "=";
     var dekodiraniKolacici = decodeURIComponent(document.cookie);
     var poljeKolacica = dekodiraniKolacici.split(';');
-    
+
     for (var i = 0; i < poljeKolacica.length; i++) {
-      var kolacic = poljeKolacica[i].trim();
-      
-      if (kolacic.indexOf(ime) === 0) {
-        return kolacic.substring(ime.length, kolacic.length);
-      }
+        var kolacic = poljeKolacica[i].trim();
+
+        if (kolacic.indexOf(ime) === 0) {
+            return kolacic.substring(ime.length, kolacic.length);
+        }
     }
-    
+
     return null;
-  }
+}
 
 
 
-  
+
 
 $(document).ready(function () {
     console.log("document loaded");
@@ -166,12 +166,12 @@ $(document).ready(function () {
     }
     if (trenutnoImeDatoteke == "prijava.php") {
         $(".prijava").addClass("aktivna");
-        let jepostavljen= jeKolacicPostavljen("zapamti")
-        if(jepostavljen){
-            let  kolacic=dohvatiKolacic("zapamti");
+        let jepostavljen = jeKolacicPostavljen("zapamti")
+        if (jepostavljen) {
+            let kolacic = dohvatiKolacic("zapamti");
             console.log(kolacic);
             $("#kime").val(kolacic);
-            
+
 
         }
 
@@ -180,7 +180,37 @@ $(document).ready(function () {
             var korisnik = $("#kime").val();
             fetch(`../api/novaLozinka.php?korisnik=${korisnik}`)
                 .then(alert("Nova lozinka poslana na mail"));
-            
+
         });
+    }
+    if (trenutnoImeDatoteke == "poduzeca.php") {
+        $(".poduzeca").addClass("aktivna");
+
+        
+        fetch('/api/poduzeca/dohvati.php')
+            .then(odgovor => odgovor.json())
+            .then(podaci => {
+                console.table(podaci);
+                const zaglavlja = [
+                    { naziv: "ID", svojstvo: "id" },
+                    { naziv: "Ime", svojstvo: "ime" },
+                    { naziv: "Radno vrijeme od", svojstvo: "radnoVrijemeOd" },
+                    { naziv: "Radno vrijeme do", svojstvo: "radnoVrijemeDo" },
+                    { naziv: "Moderator", svojstvo: "moderator" },
+                    { naziv: "Opis", svojstvo: "opis" }
+                  ];
+                const tablicaPoduzeca = new Tablica(zaglavlja,"#tablicaPoduzeca");
+                tablicaPoduzeca.dohvatiPodatke(podaci);
+                tablicaPoduzeca.ispisTablice();
+            })
+            .catch(greska => {
+                // Obradite eventualne greške koje se pojave tokom zahtjeva
+                console.error(greska);
+            });
+
+
+
+
+
     }
 });

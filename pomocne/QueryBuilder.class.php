@@ -116,5 +116,18 @@ $deleteQuery = $queryBuilder->deleteFrom('users')
     ->getQuery();
 echo $deleteQuery;  // Outputs: DELETE FROM users WHERE id = 1;
 
+
+$queryBuilder = new QueryBuilder();
+
+$selectQuery = $queryBuilder->select(['users.name', 'orders.order_number'])
+    ->from('users')
+    ->join('orders', 'users.id = orders.user_id', 'INNER')
+    ->where('users.id = 1')
+    ->getQuery();
+
+echo $selectQuery;
+// Outputs: SELECT users.name, orders.order_number FROM users INNER JOIN orders ON users.id = orders.user_id WHERE users.id = 1;
+
+
 */
 ?>

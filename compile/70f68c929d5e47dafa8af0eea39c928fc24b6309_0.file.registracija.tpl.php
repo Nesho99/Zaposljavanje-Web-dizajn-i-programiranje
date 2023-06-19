@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-06-17 02:02:34
+/* Smarty version 4.3.1, created on 2023-06-19 16:01:22
   from 'C:\xampp\htdocs\templates\registracija.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_648cf81a226a67_58790055',
+  'unifunc' => 'content_64905fb208fb80_36699938',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '70f68c929d5e47dafa8af0eea39c928fc24b6309' => 
     array (
       0 => 'C:\\xampp\\htdocs\\templates\\registracija.tpl',
-      1 => 1686960109,
+      1 => 1687183003,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_648cf81a226a67_58790055 (Smarty_Internal_Template $_smarty_tpl) {
-?><div id="glavni">
+function content_64905fb208fb80_36699938 (Smarty_Internal_Template $_smarty_tpl) {
+?><h1> Registracija </h1>
+<div id="glavni">
 <form id="registracija" action="api/registracija.php" method="post">
 <label for="ime">Ime:</label><br>
 <input type="text" id="ime" name="ime"><br>

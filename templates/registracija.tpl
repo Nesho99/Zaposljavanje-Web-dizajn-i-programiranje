@@ -1,3 +1,4 @@
+<h1> Registracija </h1>
 <div id="glavni">
 <form id="registracija" action="api/registracija.php" method="post">
 <label for="ime">Ime:</label><br>

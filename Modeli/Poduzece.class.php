@@ -4,6 +4,7 @@ class Poduzece {
     public $ime;
     public $radnoVrijemeOd;
     public $radnoVrijemeDo;
+    public $opis;
     public $moderator;
 }
 ?>

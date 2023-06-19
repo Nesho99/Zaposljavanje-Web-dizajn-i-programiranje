@@ -46,10 +46,6 @@ class QueryBuilder {
         $this->query .= ' WHERE ' . (is_array($conditions) ? implode(' AND ', $conditions) : $conditions);
         return $this;
     }
-    public function join($table, $conditions, $type = 'INNER') {
-        $this->query .= ' ' . strtoupper($type) . ' JOIN ' . $table . ' ON ' . $conditions;
-        return $this;
-    }
 
     public function like($field, $value) {
         $this->query .= (strpos($this->query, 'WHERE') !== false ? ' AND ' : ' WHERE ') . "$field LIKE '%$value%'";

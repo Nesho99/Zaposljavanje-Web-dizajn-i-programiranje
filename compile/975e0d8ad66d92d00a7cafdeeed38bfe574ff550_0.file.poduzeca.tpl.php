@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-06-20 04:29:52
+/* Smarty version 4.3.1, created on 2023-06-20 12:44:14
   from 'C:\xampp\htdocs\templates\poduzeca.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_64910f200ff941_18250005',
+  'unifunc' => 'content_649182fe0560b4_21602771',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '975e0d8ad66d92d00a7cafdeeed38bfe574ff550' => 
     array (
       0 => 'C:\\xampp\\htdocs\\templates\\poduzeca.tpl',
-      1 => 1687228190,
+      1 => 1687257698,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_64910f200ff941_18250005 (Smarty_Internal_Template $_smarty_tpl) {
+function content_649182fe0560b4_21602771 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div id="tablicaPoduzeca">
 </div>
 <form id="formaPoduzeca">
@@ -37,6 +37,6 @@ function content_64910f200ff941_18250005 (Smarty_Internal_Template $_smarty_tpl)
 <label for="Moderator">Ime:</label><br>
 <select name="moderator" id="moderator">
 </select>
-<button id="posalji"> Pošalji </button>
+<button type="button" id="posalji"> Pošalji </button>
 </form><?php }
 }

@@ -2,20 +2,24 @@ const trenutnoImeDatoteke = window.location.pathname.split('/').pop();
 
 function popuniHTMLSelekciju(selekcijaId, podaci, vrijednosniStupac, kljucniSupac) {
     const selekcijaElement = document.getElementById(selekcijaId);
+  
+    
+    selekcijaElement.innerHTML = '';
 
-    // Iteriraj kroz sve objekte u JSON nizu
+    // Iterate through all objects in the JSON array
     for (let i = 0; i < podaci.length; i++) {
         let stavka = podaci[i];
         let vrijednost = stavka[vrijednosniStupac];
         let kljuc = stavka[kljucniSupac];
 
-        // Kreiraj novi element opcije i dodaj ga u selekcijski element
         let opcijaElement = document.createElement('option');
         opcijaElement.value = vrijednost;
         opcijaElement.textContent = kljuc;
         selekcijaElement.appendChild(opcijaElement);
     }
 }
+
+
 
 
 function jeKolacicPostavljen(imeKolacica) {
@@ -294,10 +298,10 @@ $(document).ready(function () {
 
 
         $("#posalji").on("click", function () {
-            if ($("#id").val() == ""){
+            if ($("#id").val() == "") {
                 posaljiNepraznaPolja("/api/poduzeca/kreiraj.php", "formaPoduzeca")
 
-            }    
+            }
             else {
                 posaljiNepraznaPolja("/api/poduzeca/uredi.php", "formaPoduzeca")
 
@@ -312,4 +316,100 @@ $(document).ready(function () {
 
 
     }
-});
+    if (trenutnoImeDatoteke == "korisnici.php") {
+
+        //Tablica
+        const zaglavlja = [
+            { naziv: "ID", svojstvo: "id" },
+            { naziv: "Ime", svojstvo: "ime" },
+            { naziv: "Prezine", svojstvo: "prezime" },
+            { naziv: "Korisničko ime ", svojstvo: "KorisnickoIme" },
+            { naziv: "Email", svojstvo: "email" },
+            { naziv: "Aktivan", svojstvo: "jeAktiviran" },
+            { naziv: "Neuspješne prijave", svojstvo: "neuspjesnePrijave" },
+            { naziv: "Uloga", svojstvo: "uloga" }
+
+        ];
+
+        const tablicaKorisnika = new Tablica(zaglavlja, "#tablicaKorisnici");
+        tablicaKorisnika.dohvatiPodatke("/api/korisnici/dohvati.php");
+        tablicaKorisnika.ispisTablice();
+        function osvjeziPadajuceBlokiranje() {
+            $.ajax({
+                url: '/api/korisnici/dohvatiAktivne.php',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    console.table(data);
+                    popuniHTMLSelekciju("odblokirani", data, "id", "korisnickoIme");
+                },
+                error: function (error) {
+
+                    console.error(error);
+
+                }
+            });
+            $.ajax({
+                url: '/api/korisnici/dohvatiBlokirane.php',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    console.table(data);
+                    popuniHTMLSelekciju("blokirani", data, "id", "korisnickoIme");
+                },
+                error: function (error) {
+
+                    console.error(error);
+
+                }
+            });
+
+        }
+        
+        osvjeziPadajuceBlokiranje();
+
+
+
+       
+        $("#blokiraj").on("click", function () {
+        var blokirajid=$("#odblokirani").val();
+            $.ajax({
+                url: '/api/korisnici/blokiraj.php?id='+blokirajid,
+                type: 'GET',
+                success: function (success) {
+                    console.log(success);
+                    osvjeziPadajuceBlokiranje();
+
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
+        });
+
+       ;
+        $("#odblokiraj").on("click", function () {
+            var odblokirajid=$("#blokirani").val();
+            $.ajax({
+                url: '/api/korisnici/deblokiraj.php?id='+odblokirajid,
+                type: 'GET',
+                success: function (success) {
+                    console.log(success);
+                    osvjeziPadajuceBlokiranje();
+
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
+        });
+
+
+
+
+
+    }
+
+
+}
+);

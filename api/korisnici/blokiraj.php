@@ -29,6 +29,7 @@ $baza= new Baza();
 $baza->spojiDB();
 $qb= new QueryBuilder();
 $upit=$qb->update('korisnik')->set(['neuspjesnePrijave'=> 3])->where('id='.$id)->getQuery();
+print_r($upit);
 $baza->updateDB($upit);
 
 $baza->zatvoriDB();

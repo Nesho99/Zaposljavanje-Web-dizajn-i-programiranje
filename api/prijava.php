@@ -33,6 +33,7 @@ if ($Korisnik->neuspjesnePrijave == 3) {
 if ($hashlozinke != $hashUnos) {
     $neuspjesne = $Korisnik->neuspjesnePrijave + 1;
     $upit = "UPDATE  `korisnik` SET `neuspjesnePrijave`= {$neuspjesne} WHERE `korisnickoIme`= '{$korisnickoIme}'";
+    $baza->updateDB($upit);
     die("Pogrsna lozinka");
 }
 

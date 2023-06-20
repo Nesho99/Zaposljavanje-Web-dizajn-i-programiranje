@@ -14,5 +14,5 @@
 <label for="Moderator">Ime:</label><br>
 <select name="moderator" id="moderator">
 </select>
-<button id="posalji"> Pošalji </button>
+<button type="button" id="posalji"> Pošalji </button>
 </form>

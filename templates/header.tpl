@@ -26,6 +26,7 @@
 
         {if $korisnik["uloga"]=="admin"}
           <li><a class="poduzeca" href="poduzeca.php">Poduzeća</a></li>
+          <li><a class="korisnici" href="korisnici.php">Korisnici</a></li>
 
 
         {/if}

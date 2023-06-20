@@ -49,6 +49,42 @@ function dohvatiKolacic(imeKolacica) {
 
 
 
+function posaljiNepraznaPolja(url, formaId) {
+    const formData = new FormData();
+    const forma = $('#' + formaId);
+
+    // Prolazak kroz elemente forme i dodavanje samo nepraznih polja u FormData
+    forma.find('input, select, textarea').each(function () {
+        const polje = $(this);
+        const ime = polje.attr('name');
+        const vrijednost = polje.val();
+        if (vrijednost !== '') {
+            formData.append(ime, vrijednost);
+        }
+    });
+
+    // Provjera ima li nepraznih polja za slanje
+    if (formData.size === 0) {
+        console.log('Nema nepraznih polja za slanje.');
+        return;
+    }
+
+    // Slanje zahtjeva koristeći jQuery AJAX
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (odgovor) {
+            // Obrada odgovora
+        },
+        error: function (greska) {
+            // Obrada greške
+        }
+    });
+}
+
 
 
 $(document).ready(function () {
@@ -62,21 +98,25 @@ $(document).ready(function () {
     if (trenutnoImeDatoteke == "registracija.php") {
         function korisnikPostoji() {
             var korisnik = $("#kime").val();
-            fetch(`../api/postojiKorisnik.php?korisnik=${korisnik}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.postoji == true || !provjeriKorisnickoIme()) {
+            $.ajax({
+                url: `../api/postojiKorisnik.php?korisnik=${korisnik}`,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    if (data.postoji === true || !provjeriKorisnickoIme()) {
                         $("#kime").css("color", "red");
-                        alert("Korisnicko ime postoji ili je pre kratko")
+                        alert("Korisnicko ime postoji ili je pre kratko");
                         return false;
                     } else {
                         $("#kime").css("color", "black");
                         return true;
                     }
-                })
-                .catch(error => {
+                },
+                error: function (error) {
                     console.log("Error:", error);
-                });
+                }
+            });
+
         }
 
         function provjeriKorisnickoIme() {
@@ -196,8 +236,18 @@ $(document).ready(function () {
 
         $("#zaboravljena").on("click", function () {
             var korisnik = $("#kime").val();
-            fetch(`../api/novaLozinka.php?korisnik=${korisnik}`)
-                .then(alert("Nova lozinka poslana na mail"));
+            $.ajax({
+                url: `../api/novaLozinka.php?korisnik=${korisnik}`,
+                type: 'GET',
+                success: function (response) {
+                    alert("Nova lozinka poslana na mail");
+                },
+                error: function (error) {
+                    console.log("Error:", error);
+                }
+            });
+
+
 
         });
     }
@@ -205,44 +255,35 @@ $(document).ready(function () {
         $(".poduzeca").addClass("aktivna");
 
         //Tablica
-        fetch('/api/poduzeca/dohvati.php')
-            .then(odgovor => odgovor.json())
-            .then(podaci => {
-                console.table(podaci);
-                const zaglavlja = [
-                    { naziv: "ID", svojstvo: "id" },
-                    { naziv: "Ime", svojstvo: "ime" },
-                    { naziv: "Radno vrijeme od", svojstvo: "radnoVrijemeOd" },
-                    { naziv: "Radno vrijeme do", svojstvo: "radnoVrijemeDo" },
-                    { naziv: "Opis", svojstvo: "opis" },
-                    { naziv: "Moderator", svojstvo: "moderator" }
+        const zaglavlja = [
+            { naziv: "ID", svojstvo: "id" },
+            { naziv: "Ime", svojstvo: "ime" },
+            { naziv: "Radno vrijeme od", svojstvo: "radnoVrijemeOd" },
+            { naziv: "Radno vrijeme do", svojstvo: "radnoVrijemeDo" },
+            { naziv: "Opis", svojstvo: "opis" },
+            { naziv: "Moderator", svojstvo: "moderator" }
 
-                ];
-                const tablicaPoduzeca = new Tablica(zaglavlja, "#tablicaPoduzeca");
-                tablicaPoduzeca.dohvatiPodatke(podaci);
-                tablicaPoduzeca.ispisTablice();
-            })
-            .catch(greska => {
-                // Obradite eventualne greške koje se pojave tokom zahtjeva
-                console.error(greska);
+        ];
+     
+            const tablicaPoduzeca = new Tablica(zaglavlja, "#tablicaPoduzeca");
+            tablicaPoduzeca.dohvatiPodatke("/api/poduzeca/dohvati.php");
+            tablicaPoduzeca.ispisTablice();
 
-            
-            });
-            
 
-            fetch('/api/uloge/dohvatiModeratore.php')
-            .then(odgovor => odgovor.json())
-            .then(podaci => {
-                console.table(podaci);
-                popuniHTMLSelekciju("moderator",podaci,"id","korisnickoIme");
-                
-            })
-            .catch(greska => {
-                // Obradite eventualne greške koje se pojave tokom zahtjeva 
-                console.error(greska);
+        $.ajax({
+            url: '/api/uloge/dohvatiModeratore.php',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.table(data);
+                popuniHTMLSelekciju("moderator", data, "id", "korisnickoIme");
+            },
+            error: function (error) {
+                // Obradite eventualne greške koje se pojave tokom zahteva
+                console.error(error);
+            }
+        });
 
-            
-            })
 
 
 

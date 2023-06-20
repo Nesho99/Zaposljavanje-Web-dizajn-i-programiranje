@@ -6,7 +6,6 @@ $smarty->assign('naslov', 'Poduzeca');
 
 $sesija = new Sesija();
 $korisnik= $sesija->dajKorisnika();
-$smarty->assign('naslov', 'Naslovna');
 if($korisnik["uloga"]!="admin"){
 
 }

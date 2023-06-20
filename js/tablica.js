@@ -10,6 +10,7 @@ class Tablica {
   }
 
   ispisTablice() {
+    $(this.kontenjer).empty();
     const tablica = $('<table></table>');
     const redZaglavlja = $('<tr></tr>');
 
@@ -35,14 +36,31 @@ class Tablica {
     $(this.kontenjer).append(tablica);
   }
 
-  dohvatiPodatke(podaci) {
-    podaci.forEach(stavka => {
-      this.dodajUTablicu(stavka);
+  dohvatiPodatke(url) {
+    const self = this; // Spremi referencu na this
+  
+    $.ajax({
+      url: url,
+      type: 'GET',
+      dataType: 'json',
+      success: function (data) {
+        self.podaci = data; // Koristi spremljenu referencu umjesto this
+  
+      
+        self.ispisTablice();
+      },
+      error: function (greska) {
+        console.error(greska);
+      }
     });
   }
-
+  
+d
   osvjeziTablicu(podaci) {
     this.podaci = [];
     this.dohvatiPodatke(podaci);
+    podaci.forEach(stavka => {
+      this.dodajUTablicu(stavka);
+    });
   }
 }

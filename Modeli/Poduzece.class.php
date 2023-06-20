@@ -1,11 +1,12 @@
 <?php
-require("Modeli\NulHandler.class.php");
-class Poduzece extends NullHandler {
+class Poduzece {
     public $id;
     public $ime;
-    public $radnoVrijemeOd="";
+    public $radnoVrijemeOd;
     public $radnoVrijemeDo;
     public $opis;
-    public $moderator
+
 }
+
+
 ?>

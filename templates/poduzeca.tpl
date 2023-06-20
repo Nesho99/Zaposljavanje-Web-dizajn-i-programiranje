@@ -11,7 +11,7 @@
 <input type="text" id="opis" name="opis"><br>
 <label for="Moderator">Ime:</label><br>
 
-<select name="cars" id="cars">
+<select name="moderator" id="moderator">
 </select>
 
 </form>

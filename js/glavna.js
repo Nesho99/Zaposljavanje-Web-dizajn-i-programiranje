@@ -1,13 +1,13 @@
 const trenutnoImeDatoteke = window.location.pathname.split('/').pop();
 
-function popuniHTMLSelekciju(selekcijaId, podaci, ključniStupac, vrijednosniStupac) {
+function popuniHTMLSelekciju(selekcijaId, podaci, vrijednosniStupac, kljucniSupac) {
     const selekcijaElement = document.getElementById(selekcijaId);
 
     // Iteriraj kroz sve objekte u JSON nizu
     for (let i = 0; i < podaci.length; i++) {
         let stavka = podaci[i];
-        let kljuc = stavka[kljucniStupac];
         let vrijednost = stavka[vrijednosniStupac];
+        let kljuc = stavka[kljucniSupac];
 
         // Kreiraj novi element opcije i dodaj ga u selekcijski element
         let opcijaElement = document.createElement('option');
@@ -225,8 +225,24 @@ $(document).ready(function () {
             .catch(greska => {
                 // Obradite eventualne greške koje se pojave tokom zahtjeva
                 console.error(greska);
-            });
 
+            
+            });
+            
+
+            fetch('/api/uloge/dohvatiModeratore.php')
+            .then(odgovor => odgovor.json())
+            .then(podaci => {
+                console.table(podaci);
+                popuniHTMLSelekciju("moderator",podaci,"id","korisnickoIme");
+                
+            })
+            .catch(greska => {
+                // Obradite eventualne greške koje se pojave tokom zahtjeva 
+                console.error(greska);
+
+            
+            })
 
 
 

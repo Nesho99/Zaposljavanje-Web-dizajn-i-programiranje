@@ -9,7 +9,7 @@ $baza->spojiDB();
 
 $qb = new QueryBuilder();
 $upit = $qb->select(["poduzece.id","poduzece.ime","radnoVrijemeOd","radnoVrijemeDo","opis", "korisnik.korisnickoIme as moderator"])->from("poduzece")
-->join("korisnik","moderator=korisnik.id")->getQuery();
+->join("korisnik","moderator=korisnik.id","left")->getQuery();
 $rezultat=$baza->selectDB($upit);
 $poduzeca=array();
 

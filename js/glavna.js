@@ -49,7 +49,7 @@ function dohvatiKolacic(imeKolacica) {
 
 
 
-function posaljiNepraznaPolja(url, formaId) {
+function posaljiNepraznaPolja(url, formaId, tipZahtjeva = 'POST') {
     const formData = new FormData();
     const forma = $('#' + formaId);
 
@@ -72,17 +72,23 @@ function posaljiNepraznaPolja(url, formaId) {
     // Slanje zahtjeva koristeći jQuery AJAX
     $.ajax({
         url: url,
-        type: 'POST',
+        type: tipZahtjeva,
         data: formData,
         processData: false,
         contentType: false,
         success: function (odgovor) {
-            // Obrada odgovora
+            console.log(odgovor);
         },
         error: function (greska) {
-            // Obrada greške
+            console.log(greska);
         }
     });
+    forma.find('input, select, textarea').each(function () {
+        const polje = $(this);
+        polje.val = "";
+    })
+
+
 }
 
 
@@ -264,10 +270,10 @@ $(document).ready(function () {
             { naziv: "Moderator", svojstvo: "moderator" }
 
         ];
-     
-            const tablicaPoduzeca = new Tablica(zaglavlja, "#tablicaPoduzeca");
-            tablicaPoduzeca.dohvatiPodatke("/api/poduzeca/dohvati.php");
-            tablicaPoduzeca.ispisTablice();
+
+        const tablicaPoduzeca = new Tablica(zaglavlja, "#tablicaPoduzeca");
+        tablicaPoduzeca.dohvatiPodatke("/api/poduzeca/dohvati.php");
+        tablicaPoduzeca.ispisTablice();
 
 
         $.ajax({
@@ -281,7 +287,23 @@ $(document).ready(function () {
             error: function (error) {
                 // Obradite eventualne greške koje se pojave tokom zahteva
                 console.error(error);
+
             }
+        });
+
+
+
+        $("#posalji").on("click", function () {
+            if ($("#id").val() == ""){
+                posaljiNepraznaPolja("/api/poduzeca/kreiraj.php", "formaPoduzeca")
+
+            }    
+            else {
+                posaljiNepraznaPolja("/api/poduzeca/uredi.php", "formaPoduzeca")
+
+            }
+            tablicaPoduzeca.dohvatiPodatke("/api/poduzeca/dohvati.php");
+            tablicaPoduzeca.ispisTablice();
         });
 
 

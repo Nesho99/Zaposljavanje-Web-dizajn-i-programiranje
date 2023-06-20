@@ -1,6 +1,8 @@
 <div id="tablicaPoduzeca">
 </div>
-<form id="formaPoduzeca "style=float:left>
+<form id="formaPoduzeca">
+<label for="id:">ID:</label><br>
+<input type="text" id="id" name="id"><br>
 <label for="ime">Ime:</label><br>
 <input type="text" id="ime" name="ime"><br>
 <label for="od">Radno vrijeme od:</label><br>
@@ -10,8 +12,7 @@
 <label for="ime">Opis:</label><br>
 <input type="text" id="opis" name="opis"><br>
 <label for="Moderator">Ime:</label><br>
-
 <select name="moderator" id="moderator">
 </select>
-
+<button id="posalji"> Pošalji </button>
 </form>

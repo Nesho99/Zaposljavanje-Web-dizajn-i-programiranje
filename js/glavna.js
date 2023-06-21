@@ -323,7 +323,7 @@ $(document).ready(function () {
             { naziv: "ID", svojstvo: "id" },
             { naziv: "Ime", svojstvo: "ime" },
             { naziv: "Prezine", svojstvo: "prezime" },
-            { naziv: "Korisničko ime ", svojstvo: "KorisnickoIme" },
+            { naziv: "Korisničko ime ", svojstvo: "korisnickoIme" },
             { naziv: "Email", svojstvo: "email" },
             { naziv: "Aktivan", svojstvo: "jeAktiviran" },
             { naziv: "Neuspješne prijave", svojstvo: "neuspjesnePrijave" },

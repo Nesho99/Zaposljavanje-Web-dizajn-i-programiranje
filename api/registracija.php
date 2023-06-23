@@ -1,6 +1,7 @@
 <?php
 require_once("../pomocne/baza.class.php");
 require_once("../pomocne/datumi.lib.php");
+require_once("../pomocne/VirtualnoVrijeme.class.php");
 
 
 function nasumicnaSlova() {
@@ -100,7 +101,7 @@ $email = $_POST["email"];
 $sol = nasumicnaSlova();
 $link = nasumicnaSlova();
 $hash = generirajHash($lozinka, $sol);
-$datumKreacije = pretvoriUsqlTimestamp(time());
+$datumKreacije = pretvoriUsqlTimestamp(VirtualnoVrijeme::virtualnoSada());
 
 // Provjere
 provjeriIme($ime);

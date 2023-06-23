@@ -289,7 +289,7 @@ $(document).ready(function () {
                 popuniHTMLSelekciju("moderator", data, "id", "korisnickoIme");
             },
             error: function (error) {
-                // Obradite eventualne greške koje se pojave tokom zahteva
+
                 console.error(error);
 
             }

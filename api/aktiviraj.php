@@ -1,5 +1,6 @@
 <?php
 require_once("../pomocne/baza.class.php");
+require_once("../pomocne/VirtualnoVrijeme.class.php");
 $link=$_GET["link"];
 
 
@@ -11,7 +12,8 @@ $red =$rezultat->fetch_assoc();
 $datum = $red['vrijemeRegistracije'];
 
 $datumRegistracije = new DateTime($datum);
-$trenutniDatum = new DateTime();
+$trenutniDatumString= date('Y-m-d H:i:s', $timestamp);
+$trenutniDatum = new DateTime($trenutniDatumString);
 $interval = $trenutniDatum->diff($datumRegistracije);
 
 if ($interval->days >2) {

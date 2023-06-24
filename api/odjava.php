@@ -8,8 +8,6 @@ require_once("../pomocne/VirtualnoVrijeme.class.php");
 require_once("../pomocne/QueryBuilder.class.php");
 
 $dnevnik = new Dnevnik();
-
-$dnevnik->tip = "odjava";
 print_r(Sesija::dajKorisnika());
 $dnevnik->korisnik = Sesija::dajKorisnika()["korisnik"];
 
@@ -17,7 +15,7 @@ $dnevnik->korisnik = Sesija::dajKorisnika()["korisnik"];
 setcookie("prijava_sesija", "", time() - 3600, "/");
 unset($_COOKIE['prijava_sesija']);
 $dnevnik->datumVrijeme = pretvoriUsqlTimestamp(VirtualnoVrijeme::virtualnoSada());
-$dnevnik->tip = "OdjaVA";
+$dnevnik->tip = "Odjava";
 $qb = new QueryBuilder();
 
 $baza = new Baza();

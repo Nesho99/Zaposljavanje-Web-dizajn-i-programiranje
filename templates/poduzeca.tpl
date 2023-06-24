@@ -1,7 +1,7 @@
 <div id="tablicaPoduzeca">
 </div>
 <form id="formaPoduzeca">
-<label for="id:">ID:</label><br>
+<label for="id">ID:</label><br>
 <input type="text" id="id" name="id"><br>
 <label for="ime">Ime:</label><br>
 <input type="text" id="ime" name="ime"><br>

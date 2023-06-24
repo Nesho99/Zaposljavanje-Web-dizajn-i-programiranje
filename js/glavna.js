@@ -95,7 +95,19 @@ function posaljiNepraznaPolja(url, formaId, tipZahtjeva = 'POST') {
 
 }
 
-
+function pretvoriUSQLDatumVrijeme(isoDatumVrijeme) {
+    const datum = new Date(isoDatumVrijeme);
+    const godina = datum.getFullYear();
+    const mjesec = String(datum.getMonth() + 1).padStart(2, '0');
+    const dan = String(datum.getDate()).padStart(2, '0');
+    const sati = String(datum.getHours()).padStart(2, '0');
+    const minute = String(datum.getMinutes()).padStart(2, '0');
+    const sekunde = String(datum.getSeconds()).padStart(2, '0');
+  
+    const sqlDatumVrijeme = `${godina}-${mjesec}-${dan} ${sati}:${minute}:${sekunde}`;
+    return sqlDatumVrijeme;
+  }
+  
 
 $(document).ready(function () {
     console.log("document loaded");
@@ -379,6 +391,8 @@ $(document).ready(function () {
                 success: function (success) {
                     console.log(success);
                     osvjeziPadajuceBlokiranje();
+                    tablicaKorisnika.dohvatiPodatke("/api/korisnici/dohvati.php");
+                    tablicaKorisnika.ispisTablice();
 
                 },
                 error: function (error) {
@@ -396,6 +410,8 @@ $(document).ready(function () {
                 success: function (success) {
                     console.log(success);
                     osvjeziPadajuceBlokiranje();
+                    tablicaKorisnika.dohvatiPodatke("/api/korisnici/dohvati.php");
+                    tablicaKorisnika.ispisTablice();
 
                 },
                 error: function (error) {
@@ -405,6 +421,11 @@ $(document).ready(function () {
         });
 
 
+
+
+
+    
+      
 
 
 

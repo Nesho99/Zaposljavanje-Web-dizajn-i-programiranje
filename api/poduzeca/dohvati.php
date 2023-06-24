@@ -16,7 +16,7 @@ $poduzeca=array();
 while ($obj = $rezultat->fetch_object("Poduzece")) {
     array_push($poduzeca, $obj);
  }
-print_r(json_encode($poduzeca));
+echo (json_encode($poduzeca));
 
 
 

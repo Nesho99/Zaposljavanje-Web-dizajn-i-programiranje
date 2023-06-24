@@ -9,7 +9,7 @@ $baza->spojiDB();
 
 
 $qb = new QueryBuilder();
-$upit = $qb->select(["dnevnik.id","datumVrijeme","korisnik.korisnickoIme","tip","upit","radnja"])->from("dnevnik")->join("korisnik","korisnik.id=dnevnik.korisnik");
+$upit = $qb->select(["dnevnik.id","datumVrijeme","korisnik.korisnickoIme as korisnik","tip","upit","radnja"])->from("dnevnik")->join("korisnik","korisnik.id=dnevnik.korisnik");
 if(isset($_POST["od"]) and isset($_POST["od"])){
     $od= $_POST["od"];
     $do=$_POST["do"];

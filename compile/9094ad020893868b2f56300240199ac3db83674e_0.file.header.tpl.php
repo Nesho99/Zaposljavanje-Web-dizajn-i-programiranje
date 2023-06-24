@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-06-20 05:56:44
+/* Smarty version 4.3.1, created on 2023-06-25 00:07:09
   from 'C:\xampp\htdocs\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_6491237ccae564_94226259',
+  'unifunc' => 'content_6497690d6594f0_14191999',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9094ad020893868b2f56300240199ac3db83674e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\templates\\header.tpl',
-      1 => 1687233380,
+      1 => 1687644385,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6491237ccae564_94226259 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6497690d6594f0_14191999 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -60,6 +60,7 @@ function content_6491237ccae564_94226259 (Smarty_Internal_Template $_smarty_tpl)
         <?php if ($_smarty_tpl->tpl_vars['korisnik']->value["uloga"] == "admin") {?>
           <li><a class="poduzeca" href="poduzeca.php">Poduzeća</a></li>
           <li><a class="korisnici" href="korisnici.php">Korisnici</a></li>
+          <li><a class="dnevnik" href="dnevnik.php">Dnevnik</a></li>
 
 
         <?php }?>

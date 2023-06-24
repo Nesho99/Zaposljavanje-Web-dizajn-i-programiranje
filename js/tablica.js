@@ -36,13 +36,14 @@ class Tablica {
     $(this.kontenjer).append(tablica);
   }
 
-  dohvatiPodatke(url) {
+  dohvatiPodatke(url, tipZahtjeva="get", argumenti={}) {
     const self = this; // Spremi referencu na this
   
     $.ajax({
       url: url,
-      type: 'GET',
+      type: tipZahtjeva,
       dataType: 'json',
+      data:argumenti,
       success: function (data) {
         self.podaci = data; // Koristi spremljenu referencu umjesto this
   
@@ -55,7 +56,7 @@ class Tablica {
     });
   }
   
-d
+
   osvjeziTablicu(podaci) {
     this.podaci = [];
     this.dohvatiPodatke(podaci);

@@ -2,8 +2,8 @@ const trenutnoImeDatoteke = window.location.pathname.split('/').pop();
 
 function popuniHTMLSelekciju(selekcijaId, podaci, vrijednosniStupac, kljucniSupac) {
     const selekcijaElement = document.getElementById(selekcijaId);
-  
-    
+
+
     selekcijaElement.innerHTML = '';
 
     // Iterate through all objects in the JSON array
@@ -58,10 +58,16 @@ function posaljiNepraznaPolja(url, formaId, tipZahtjeva = 'POST') {
     const forma = $('#' + formaId);
 
     // Prolazak kroz elemente forme i dodavanje samo nepraznih polja u FormData
-    forma.find('input, select, textarea').each(function () {
+    forma.find('input, select, textarea', 'datetime-local').each(function () {
         const polje = $(this);
         const ime = polje.attr('name');
-        const vrijednost = polje.val();
+        if (polje.attr('type') === 'datetime-local') {
+            const vrijednost = pretvoriUSQLDatumVrijeme(polje.val())
+        } else {
+            const vrijednost = polje.val();
+
+        }
+
         if (vrijednost !== '') {
             formData.append(ime, vrijednost);
         }
@@ -103,11 +109,11 @@ function pretvoriUSQLDatumVrijeme(isoDatumVrijeme) {
     const sati = String(datum.getHours()).padStart(2, '0');
     const minute = String(datum.getMinutes()).padStart(2, '0');
     const sekunde = String(datum.getSeconds()).padStart(2, '0');
-  
+
     const sqlDatumVrijeme = `${godina}-${mjesec}-${dan} ${sati}:${minute}:${sekunde}`;
     return sqlDatumVrijeme;
-  }
-  
+}
+
 
 $(document).ready(function () {
     console.log("document loaded");
@@ -377,16 +383,16 @@ $(document).ready(function () {
             });
 
         }
-        
+
         osvjeziPadajuceBlokiranje();
 
 
 
-       
+
         $("#blokiraj").on("click", function () {
-        var blokirajid=$("#odblokirani").val();
+            var blokirajid = $("#odblokirani").val();
             $.ajax({
-                url: '/api/korisnici/blokiraj.php?id='+blokirajid,
+                url: '/api/korisnici/blokiraj.php?id=' + blokirajid,
                 type: 'GET',
                 success: function (success) {
                     console.log(success);
@@ -401,11 +407,11 @@ $(document).ready(function () {
             });
         });
 
-       ;
+        ;
         $("#odblokiraj").on("click", function () {
-            var odblokirajid=$("#blokirani").val();
+            var odblokirajid = $("#blokirani").val();
             $.ajax({
-                url: '/api/korisnici/deblokiraj.php?id='+odblokirajid,
+                url: '/api/korisnici/deblokiraj.php?id=' + odblokirajid,
                 type: 'GET',
                 success: function (success) {
                     console.log(success);
@@ -424,10 +430,43 @@ $(document).ready(function () {
 
 
 
-    
+
+
+
+
+
+    }
+    if(trenutnoImeDatoteke=="dnevnik.php"){
+        const zaglavlja = [
+            { naziv: "Datum i vrijeme", svojstvo: "datumVrijeme" },
+            { naziv: "Korisnik", svojstvo: "korisnik" },
+            { naziv: "Tip", svojstvo: "tip" },
+            { naziv: "Upit", svojstvo: "upit" },
+            { naziv: "Radnja", svojstvo: "radnja" },
+           
+
+        ];
+
+        const tablicaDnevnik = new Tablica(zaglavlja, "#tablicaDnevnik");
+        tablicaDnevnik.dohvatiPodatke("/api/dnevnik/dohvati.php");
+        tablicaDnevnik.ispisTablice();
+        $("#pretrazi").on('click', function(){
+            var od = $("#od").val();
+            var destinacija = $("#do").val();
+            var argumenti = {
+                "od": od,
+                "do": destinacija
+            };
+            
+        
+              
+            
+            tablicaDnevnik.dohvatiPodatke('/api/dnevnik/dohvati.php', tipZahtjeva="post",argumenti);
+            tablicaDnevnik.osvjeziTablicu();
+
+        })
+
       
-
-
 
     }
 

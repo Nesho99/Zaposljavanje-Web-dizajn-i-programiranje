@@ -7,7 +7,7 @@ require_once("../../Modeli/Korisnik.class.php");
 $baza = new Baza();
 $baza->spojiDB();
 $qb = new QueryBuilder();
-$upit = $qb->select("*")->from("korisnik")->where("uloga='moderator'")->getQuery();
+$upit = $qb->select("*")->from("korisnik")->where("uloga !='korisnik'")->getQuery();
 $rezultat=$baza->selectDB($upit);
 $korisnici=array();
 

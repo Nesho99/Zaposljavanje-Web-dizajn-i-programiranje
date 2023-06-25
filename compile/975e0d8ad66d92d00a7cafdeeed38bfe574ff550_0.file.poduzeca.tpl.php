@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-06-20 12:44:14
+/* Smarty version 4.3.1, created on 2023-06-25 16:00:44
   from 'C:\xampp\htdocs\templates\poduzeca.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_649182fe0560b4_21602771',
+  'unifunc' => 'content_6498488c4dde08_90820883',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '975e0d8ad66d92d00a7cafdeeed38bfe574ff550' => 
     array (
       0 => 'C:\\xampp\\htdocs\\templates\\poduzeca.tpl',
-      1 => 1687257698,
+      1 => 1687631106,
       2 => 'file',
     ),
   ),
@@ -20,11 +20,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_649182fe0560b4_21602771 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6498488c4dde08_90820883 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div id="tablicaPoduzeca">
 </div>
 <form id="formaPoduzeca">
-<label for="id:">ID:</label><br>
+<label for="id">ID:</label><br>
 <input type="text" id="id" name="id"><br>
 <label for="ime">Ime:</label><br>
 <input type="text" id="ime" name="ime"><br>

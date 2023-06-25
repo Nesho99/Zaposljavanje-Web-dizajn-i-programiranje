@@ -62,9 +62,9 @@ function posaljiNepraznaPolja(url, formaId, tipZahtjeva = 'POST') {
         const polje = $(this);
         const ime = polje.attr('name');
         if (polje.attr('type') === 'datetime-local') {
-            const vrijednost = pretvoriUSQLDatumVrijeme(polje.val())
+            var vrijednost = pretvoriUSQLDatumVrijeme(polje.val())
         } else {
-            const vrijednost = polje.val();
+            var vrijednost = polje.val();
 
         }
 

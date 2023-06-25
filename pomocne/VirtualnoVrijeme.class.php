@@ -23,21 +23,37 @@ class VirtualnoVrijeme
         curl_close($curl);
         return $pomak;
     }
-    public  static function upisiPomak()
+    public static function upisiPomak()
     {
         $datoteka = '../configs/Vrijeme.cfg';
-        $vrijeme = self::dohvatiPomakUrl(); 
-        $dat = fopen($datoteka, 'w');
+        $vrijeme = self::dohvatiPomakUrl();
+        $dat = fopen(realpath($datoteka), 'w');
 
-       
+
         fwrite($dat, $vrijeme);
         fclose($dat);
     }
     private static function dohvatiPomak()
     {
-        $datoteka = '../configs/Vrijeme.cfg';
-        $dat = fopen($datoteka, 'r');
-        $vrijeme= fread($dat, filesize($datoteka));
+
+        try {
+            $datoteka = __DIR__ . '/../configs/Vrijeme.cfg';
+            $dat = fopen(realpath($datoteka), 'r');
+            $vrijeme = fread($dat, filesize($datoteka));
+        } catch (Exception $ex) {
+            try {
+                $datoteka = __DIR__ . '/../../configs/Vrijeme.cfg';
+                $dat = fopen(realpath($datoteka), 'r');
+                $vrijeme = fread($dat, filesize($datoteka));
+            } catch (Exception $ex) {
+                // Handle the exception or add any necessary error handling
+            }
+        }
+        
+
+
+      
+
         fclose($dat);
         return $vrijeme;
 

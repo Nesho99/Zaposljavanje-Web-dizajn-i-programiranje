@@ -335,6 +335,8 @@ $(document).ready(function () {
 
     }
     if (trenutnoImeDatoteke == "korisnici.php") {
+        $(".korisnici").addClass("aktivna");
+
 
         //Tablica
         const zaglavlja = [
@@ -426,6 +428,9 @@ $(document).ready(function () {
             });
         });
 
+        
+        
+
 
 
 
@@ -437,6 +442,8 @@ $(document).ready(function () {
 
     }
     if(trenutnoImeDatoteke=="dnevnik.php"){
+        $(".dnevnik").addClass("aktivna");
+
         const zaglavlja = [
             { naziv: "Datum i vrijeme", svojstvo: "datumVrijeme" },
             { naziv: "Korisnik", svojstvo: "korisnik" },
@@ -446,6 +453,7 @@ $(document).ready(function () {
            
 
         ];
+      
 
         const tablicaDnevnik = new Tablica(zaglavlja, "#tablicaDnevnik");
         tablicaDnevnik.dohvatiPodatke("/api/dnevnik/dohvati.php");
@@ -467,6 +475,59 @@ $(document).ready(function () {
         })
 
       
+
+    }
+    if(trenutnoImeDatoteke=="upravljanjePoslovima.php"){
+
+        $(".upravljanjePoslovima").addClass("aktivna");
+        const zaglavlja = [
+            { naziv: "ID", svojstvo: "id" },
+            { naziv: "Naziv", svojstvo: "naziv" },
+            { naziv: "Opis", svojstvo: "opis" },
+            { naziv: "Pocetak natječaja", svojstvo: "datumVrijemePocetak" },
+            { naziv: "Kraj natječaja", svojstvo: "datumVrijemeKraj"},
+            {naziv: "Poduzeće", svojstvo: "poduzece"}
+           
+
+        ];
+      
+
+        const tablicaNatjecaji= new Tablica(zaglavlja, "#tablicaNatjecaji");
+        tablicaNatjecaji.dohvatiPodatke("/api/natjecaji/dohvati.php");
+        tablicaNatjecaji.ispisTablice();
+
+
+        $.ajax({
+            url: '/api/poduzeca/dohvatiPoduzecaModeratora.php',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.table(data);
+                popuniHTMLSelekciju("poduzece", data, "id", "ime");
+            },
+            error: function (error) {
+
+                console.error(error);
+            }
+        })
+
+        $("#posalji").on("click", function () {
+            if ($("#id").val() == "") {
+                posaljiNepraznaPolja("/api/natjecaji/kreiraj.php", "formaUpavljanjeNatjecajima")
+
+            }
+            else {
+                posaljiNepraznaPolja("/api/natjecaji/uredi.php", "formaUpavljanjeNatjecajima")
+
+            }
+            tablicaNatjecaji.dohvatiPodatke("/api/natjecaji/dohvati.php");
+            tablicaNatjecaji.ispisTablice();
+        });
+
+        
+        
+        
+
 
     }
 

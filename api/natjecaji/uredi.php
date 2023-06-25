@@ -2,6 +2,11 @@
 require_once("../../pomocne/Sesija.class.php");
 require_once("../../pomocne/baza.class.php");
 require_once("../../pomocne/QueryBuilder.class.php");
+require_once("../../pomocne/VirtualnoVrijeme.class.php");
+require_once("../../pomocne/datumi.lib.php");
+
+date_default_timezone_set('Europe/Zagreb');
+
 
 //Provjeri da je admin
 $sesija = new Sesija();
@@ -46,7 +51,7 @@ if (isset($_POST["poduzece"])) {
 if (isset($_POST["od"])) {
     $od = $_POST["od"];
     $vrijednosti["datumVrijemePocetak"] = $od;
-    $timestamp = intval(VirtualnoVrijeme::virtualnoSada());
+    $timestamp = intval(strtotime($od));
     $datetime = DateTime::createFromFormat('U', $timestamp);
     $datetime->add(new DateInterval('P10D'));
     $do = pretvoriUsqlTimestamp($datetime->getTimestamp());
@@ -61,6 +66,7 @@ $baza = new Baza();
 $baza->spojiDB();
 $qb = new QueryBuilder();
 $upit = $qb->update('natjecaj')->set($vrijednosti)->where('id=' . $id)->getQuery();
+print_r($upit);
 $baza->updateDB($upit);
 $baza->zatvoriDB();
 

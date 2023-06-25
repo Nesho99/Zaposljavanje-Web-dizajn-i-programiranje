@@ -7,6 +7,8 @@ require_once("../../pomocne/VirtualnoVrijeme.class.php");
 
 
 
+date_default_timezone_set('Europe/Zagreb');
+
 //Provjeri da je admin
 $sesija = new Sesija();
 
@@ -24,9 +26,9 @@ if (!($korisnik["uloga"]=="admin" or $korisnik["uloga"]=="moderator")) {
 //Dohvati parametre
 $naziv = $_POST["naziv"];
 $opis = $_POST["opis"];
-$poduzeceId= $_POST["poduzeceId"];
 $datumOd=$_POST["od"];
-$timestamp = intval(VirtualnoVrijeme::virtualnoSada());
+$poduzeceId=$_POST["poduzece"];
+$timestamp = intval(strtotime($datumOd));
 $datetime = DateTime::createFromFormat('U', $timestamp);
 $datetime->add(new DateInterval('P10D'));
 $datumDo = pretvoriUsqlTimestamp($datetime->getTimestamp());

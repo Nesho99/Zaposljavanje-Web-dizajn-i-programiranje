@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-06-25 00:07:09
+/* Smarty version 4.3.1, created on 2023-06-26 20:19:18
   from 'C:\xampp\htdocs\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_6497690d6594f0_14191999',
+  'unifunc' => 'content_6499d6a6d0b445_08230726',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9094ad020893868b2f56300240199ac3db83674e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\templates\\header.tpl',
-      1 => 1687644385,
+      1 => 1687803551,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6497690d6594f0_14191999 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6499d6a6d0b445_08230726 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -63,6 +63,10 @@ function content_6497690d6594f0_14191999 (Smarty_Internal_Template $_smarty_tpl)
           <li><a class="dnevnik" href="dnevnik.php">Dnevnik</a></li>
 
 
+        <?php }?>
+        <?php if ($_smarty_tpl->tpl_vars['korisnik']->value["uloga"] == "admin" || $_smarty_tpl->tpl_vars['korisnik']->value["uloga"] == "moderator") {?>
+
+          <li><a class="upravljanjePoslovima" href="upravljanjePoslovima.php">Upravljanje poslovima</a></li>
         <?php }?>
 
 

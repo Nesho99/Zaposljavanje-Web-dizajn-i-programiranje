@@ -31,6 +31,10 @@
 
 
         {/if}
+        {if $korisnik["uloga"]=="admin" || $korisnik["uloga"]=="moderator"}
+
+          <li><a class="upravljanjePoslovima" href="upravljanjePoslovima.php">Upravljanje poslovima</a></li>
+        {/if}
 
 
       {/if}

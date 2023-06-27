@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-06-27 00:07:49
+/* Smarty version 4.3.1, created on 2023-06-27 18:30:50
   from 'C:\xampp\htdocs\templates\listaPoslova.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_649a0c35c4be52_34889947',
+  'unifunc' => 'content_649b0eba7093e5_73800215',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9b975a9cd95e54fcbef71c7d1d1747fc27350853' => 
     array (
       0 => 'C:\\xampp\\htdocs\\templates\\listaPoslova.tpl',
-      1 => 1687817268,
+      1 => 1687883021,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_649a0c35c4be52_34889947 (Smarty_Internal_Template $_smarty_tpl) {
+function content_649b0eba7093e5_73800215 (Smarty_Internal_Template $_smarty_tpl) {
 ?><style>
 h2{
     margin: 0;
     padding: 0;
 }
 
-div#lista {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  clear: both;
 
-}
 
 </style>
 <div id="lista">

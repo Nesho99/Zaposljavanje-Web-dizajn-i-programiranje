@@ -19,6 +19,10 @@
         <li><a class="registracija" href="registracija.php">Registracija</a></li>
         <li><a class="prijava" href="prijava.php">Prijava</a></li>
       {else}
+        <li><a class="listaPoslova" href="listaPoslova.php">Lista poslova</a></li>
+
+
+
 
         <li style="float:right"><a class="aktivna" href="/api/odjava.php">Odjava</a></li>
         <li id="logiran" style="float: right; color: white; font-size: 30px; padding: 0; margin: 0; margin-right: 5px;">

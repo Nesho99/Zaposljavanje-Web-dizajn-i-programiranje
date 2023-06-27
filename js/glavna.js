@@ -530,6 +530,9 @@ $(document).ready(function () {
 
 
     }
+    if(trenutnoImeDatoteke=="listaPoslova.php"){
+        $(".listaPoslova").addClass("aktivna");
+    }
 
 
 }

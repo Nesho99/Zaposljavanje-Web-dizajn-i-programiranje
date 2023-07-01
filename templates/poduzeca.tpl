@@ -11,8 +11,15 @@
 <input type="text" id="do" name="do"><br>
 <label for="ime">Opis:</label><br>
 <input type="text" id="opis" name="opis"><br>
-<label for="Moderator">Ime:</label><br>
+<label for="moderator">Moderator::</label><br>
 <select name="moderator" id="moderator">
 </select>
 <button type="button" id="posalji"> Pošalji </button>
+</form>
+
+<form id="formaModeratora">
+<label for="korisnik">Daj moredatora:</label><br>
+<select name="id" id="korisnik">
+</select>
+<button type="button" id="posaljiModerator"> Pošalji </button>
 </form>

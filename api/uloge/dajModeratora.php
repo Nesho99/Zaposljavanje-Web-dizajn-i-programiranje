@@ -16,7 +16,7 @@ if($korisnik== null or $korisnik["uloga"] != "admin") {
     $rez->poruka="Nedovoljno privilegija";
     die(json_encode($rez));
 }
-$id= $_GET["id"];
+$id= $_REQUEST["id"];
 
 $baza= new Baza();
 $baza->spojiDB();

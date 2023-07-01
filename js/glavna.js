@@ -328,6 +328,57 @@ $(document).ready(function () {
             tablicaPoduzeca.ispisTablice();
         });
 
+        $.ajax({
+            url: '/api/uloge/dohvatiKorisnike.php',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.table(data);
+                popuniHTMLSelekciju("korisnik", data, "id", "korisnickoIme");
+            },
+            error: function (error) {
+
+                console.error(error);
+
+            }
+        });
+
+        $("#posaljiModerator").on("click", function () {
+            posaljiNepraznaPolja("/api/uloge/dajModeratora.php", "formaModeratora")
+
+
+            $.ajax({
+                url: '/api/uloge/dohvatiKorisnike.php',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    console.table(data);
+                    popuniHTMLSelekciju("korisnik", data, "id", "korisnickoIme");
+
+                },
+                error: function (error) {
+
+                    console.error(error);
+
+                }
+            });
+
+            $.ajax({
+                url: '/api/uloge/dohvatiModeratore.php',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    console.table(data);
+                    popuniHTMLSelekciju("moderator", data, "id", "korisnickoIme");
+                },
+                error: function (error) {
+
+                    console.error(error);
+
+                }
+            });
+        });
+
 
 
 
@@ -428,8 +479,8 @@ $(document).ready(function () {
             });
         });
 
-        
-        
+
+
 
 
 
@@ -441,7 +492,7 @@ $(document).ready(function () {
 
 
     }
-    if(trenutnoImeDatoteke=="dnevnik.php"){
+    if (trenutnoImeDatoteke == "dnevnik.php") {
         $(".dnevnik").addClass("aktivna");
 
         const zaglavlja = [
@@ -450,34 +501,34 @@ $(document).ready(function () {
             { naziv: "Tip", svojstvo: "tip" },
             { naziv: "Upit", svojstvo: "upit" },
             { naziv: "Radnja", svojstvo: "radnja" },
-           
+
 
         ];
-      
+
 
         const tablicaDnevnik = new Tablica(zaglavlja, "#tablicaDnevnik");
         tablicaDnevnik.dohvatiPodatke("/api/dnevnik/dohvati.php");
         tablicaDnevnik.ispisTablice();
-        $("#pretrazi").on('click', function(){
+        $("#pretrazi").on('click', function () {
             var od = $("#od").val();
             var destinacija = $("#do").val();
             var argumenti = {
                 "od": od,
                 "do": destinacija
             };
-            
-        
-              
-            
-            tablicaDnevnik.dohvatiPodatke('/api/dnevnik/dohvati.php', tipZahtjeva="post",argumenti);
+
+
+
+
+            tablicaDnevnik.dohvatiPodatke('/api/dnevnik/dohvati.php', tipZahtjeva = "post", argumenti);
             tablicaDnevnik.osvjeziTablicu();
 
         })
 
-      
+
 
     }
-    if(trenutnoImeDatoteke=="upravljanjePoslovima.php"){
+    if (trenutnoImeDatoteke == "upravljanjePoslovima.php") {
 
         $(".upravljanjePoslovima").addClass("aktivna");
         const zaglavlja = [
@@ -485,14 +536,14 @@ $(document).ready(function () {
             { naziv: "Naziv", svojstvo: "naziv" },
             { naziv: "Opis", svojstvo: "opis" },
             { naziv: "Pocetak natječaja", svojstvo: "datumVrijemePocetak" },
-            { naziv: "Kraj natječaja", svojstvo: "datumVrijemeKraj"},
-            {naziv: "Poduzeće", svojstvo: "poduzece"}
-           
+            { naziv: "Kraj natječaja", svojstvo: "datumVrijemeKraj" },
+            { naziv: "Poduzeće", svojstvo: "poduzece" }
+
 
         ];
-      
 
-        const tablicaNatjecaji= new Tablica(zaglavlja, "#tablicaNatjecaji");
+
+        const tablicaNatjecaji = new Tablica(zaglavlja, "#tablicaNatjecaji");
         tablicaNatjecaji.dohvatiPodatke("/api/natjecaji/dohvati.php");
         tablicaNatjecaji.ispisTablice();
 
@@ -524,13 +575,13 @@ $(document).ready(function () {
             tablicaNatjecaji.ispisTablice();
         });
 
-        
-        
-        
+
+
+
 
 
     }
-    if(trenutnoImeDatoteke=="listaPoslova.php"){
+    if (trenutnoImeDatoteke == "listaPoslova.php") {
         $(".listaPoslova").addClass("aktivna");
     }
 

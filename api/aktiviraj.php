@@ -10,14 +10,14 @@ $upit="SELECT * FROM `korisnik` WHERE `linkAktivacije`= '{$link}'";
 $rezultat=$baza->selectDB($upit);
 $red =$rezultat->fetch_assoc();
 $datum = $red['vrijemeRegistracije'];
-
+$timestamp= VirtualnoVrijeme::virtualnoSada();
 $datumRegistracije = new DateTime($datum);
 $trenutniDatumString= date('Y-m-d H:i:s', $timestamp);
 $trenutniDatum = new DateTime($trenutniDatumString);
 $interval = $trenutniDatum->diff($datumRegistracije);
 
 if ($interval->days >2) {
-    echo "Link morate potvrditi unutar 2 dana";
+    die("Link morate potvrditi unutar 2 dana");
 }
 
 

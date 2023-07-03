@@ -121,6 +121,20 @@ $(document).ready(function () {
 
     if (trenutnoImeDatoteke == "index.php") {
         $(".naslovna").addClass("aktivna");
+
+        $.ajax({
+            url: '/api/natjecaji/dodjeli.php',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.table(data);
+              
+            },
+            error: function (error) {
+
+                console.error(error);
+            }
+        })
     }
 
     if (trenutnoImeDatoteke == "registracija.php") {

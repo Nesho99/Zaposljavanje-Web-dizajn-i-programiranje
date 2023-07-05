@@ -38,6 +38,7 @@
         {if $korisnik["uloga"]=="admin" || $korisnik["uloga"]=="moderator"}
 
           <li><a class="upravljanjePoslovima" href="upravljanjePoslovima.php">Upravljanje poslovima</a></li>
+          <li><a class="kreiranjeZadataka" href="kreiranjeZadataka.php">Kreiranje zadataka</a></li>
         {/if}
 
 

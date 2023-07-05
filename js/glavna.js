@@ -599,6 +599,53 @@ $(document).ready(function () {
         $(".listaPoslova").addClass("aktivna");
     }
 
+    if(trenutnoImeDatoteke=="kreiranjeZadataka.php"){
+        $(".kreiranjeZadataka").addClass("aktivna")
+
+        const zaglavlja = [
+            { naziv: "ID", svojstvo: "id" },
+            { naziv: "Naziv", svojstvo: "naziv" },
+            { naziv: "Opis", svojstvo: "opis" },
+            { naziv: "Datum", svojstvo: "dan" },
+            { naziv: "Zaposlenik", svojstvo: "zaposlenik" },
+            { naziv: "Ocjena", svojstvo: "ocjena" },
+            {naziv:"Opis riješenaja", svojstvo:"opisRijesenja"}
+
+
+        ];
+
+
+        const tablicaNatjecaji = new Tablica(zaglavlja, "#tablicaZadatci");
+        tablicaNatjecaji.dohvatiPodatke("/api/zadatci/dohvatiZadatkeModeratora.php");
+        tablicaNatjecaji.ispisTablice();
+        $.ajax({
+            url: '/api/zadatci/dohvatiZaposlenikeModeratora.php',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.table(data);
+                popuniHTMLSelekciju("zaposlenik", data, "id", "korisnickoIme");
+            },
+            error: function (error) {
+
+                console.error(error);
+            }
+        })
+        $("#posalji").on("click", function () {
+            if ($("#id").val() == "") {
+                posaljiNepraznaPolja("/api/zadatci/kreiraj.php", "upravljanjeZadatcima")
+
+            }
+            else {
+                posaljiNepraznaPolja("/api/zadatci/uredi.php", "upravljanjeZadatcima")
+
+            }
+            tablicaNatjecaji.dohvatiPodatke("/api/zadatci/dohvatiZadatkeModeratora.php");
+            tablicaNatjecaji.ispisTablice();
+        });
+
+    }
+
 
 }
 );

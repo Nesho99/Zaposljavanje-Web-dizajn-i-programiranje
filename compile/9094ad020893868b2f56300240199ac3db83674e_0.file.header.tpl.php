@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-07-05 20:28:01
+/* Smarty version 4.3.1, created on 2023-07-08 21:31:48
   from 'C:\xampp\htdocs\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_64a5b631325ad9_72338588',
+  'unifunc' => 'content_64a9b9a4b5bc50_61001285',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9094ad020893868b2f56300240199ac3db83674e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\templates\\header.tpl',
-      1 => 1688581669,
+      1 => 1688844704,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_64a5b631325ad9_72338588 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64a9b9a4b5bc50_61001285 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -52,6 +52,7 @@ function content_64a5b631325ad9_72338588 (Smarty_Internal_Template $_smarty_tpl)
         <li><a class="prijava" href="prijava.php">Prijava</a></li>
       <?php } else { ?>
         <li><a class="listaPoslova" href="listaPoslova.php">Lista poslova</a></li>
+        <li><a class="zadatciZaposlenika" href="zadatciZaposlenika.php">Zadatci zaposlenika</a></li>
 
 
 

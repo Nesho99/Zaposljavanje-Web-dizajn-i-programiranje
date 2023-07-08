@@ -645,6 +645,45 @@ $(document).ready(function () {
         });
 
     }
+    if(trenutnoImeDatoteke=="zadatciZaposlenika.php"){
+        $(".zadatciZaposlenika").addClass("aktivna");
+        const zaglavlja = [
+            { naziv: "ID", svojstvo: "id" },
+            { naziv: "Naziv", svojstvo: "naziv" },
+            { naziv: "Opis", svojstvo: "opis" },
+            { naziv: "Datum", svojstvo: "dan" },
+            { naziv: "Zaposlenik", svojstvo: "zaposlenik" },
+            { naziv: "Ocjena", svojstvo: "ocjena" },
+            {naziv:"Opis riješenaja", svojstvo:"opisRijesenja"}
+
+
+        ];
+
+
+        const tablicaZadatci = new Tablica(zaglavlja, "#tablicaZadatci");
+        tablicaZadatci.dohvatiPodatke("api/zadatci/dohvatiZadatkeZaposlenika.php");
+        tablicaZadatci.ispisTablice();
+
+        $("#posaljiDolazak").on("click", function () {
+          
+            posaljiNepraznaPolja("/api/dolasci/kreiraj.php", "dolasci")
+        });
+
+        $("#posaljiZadatak").on("click", function () {
+          
+            posaljiNepraznaPolja("/api/zadatci/rijesi.php", "zadatak")
+            tablicaZadatci.dohvatiPodatke("api/zadatci/dohvatiZadatkeZaposlenika.php");
+            tablicaZadatci.ispisTablice();
+        });
+
+
+        
+
+        
+
+        
+
+    }
 
 
 }

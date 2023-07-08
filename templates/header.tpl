@@ -20,6 +20,7 @@
         <li><a class="prijava" href="prijava.php">Prijava</a></li>
       {else}
         <li><a class="listaPoslova" href="listaPoslova.php">Lista poslova</a></li>
+        <li><a class="zadatciZaposlenika" href="zadatciZaposlenika.php">Zadatci zaposlenika</a></li>
 
 
 

@@ -71,6 +71,16 @@ class QueryBuilder {
         return $this;
     }
 
+    public function groupBy($field) {
+        $this->query .= ' GROUP BY ' . $field;
+        return $this;
+    }
+
+    public function having($condition) {
+        $this->query .= ' HAVING ' . $condition;
+        return $this;
+    }
+
     public function getQuery() {
         if ($this->values) {
             return $this->query . $this->values . ';';

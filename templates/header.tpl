@@ -40,6 +40,7 @@
 
           <li><a class="upravljanjePoslovima" href="upravljanjePoslovima.php">Upravljanje poslovima</a></li>
           <li><a class="kreiranjeZadataka" href="kreiranjeZadataka.php">Kreiranje zadataka</a></li>
+          <li><a class="statistika" href="statistika.php">Statistika </a></li>
         {/if}
 
 

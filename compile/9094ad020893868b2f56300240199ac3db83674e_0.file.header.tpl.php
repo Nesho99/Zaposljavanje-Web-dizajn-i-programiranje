@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-07-08 21:31:48
+/* Smarty version 4.3.1, created on 2023-07-09 12:53:59
   from 'C:\xampp\htdocs\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_64a9b9a4b5bc50_61001285',
+  'unifunc' => 'content_64aa91c7108ca5_97709766',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9094ad020893868b2f56300240199ac3db83674e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\templates\\header.tpl',
-      1 => 1688844704,
+      1 => 1688899959,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_64a9b9a4b5bc50_61001285 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64aa91c7108ca5_97709766 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -73,6 +73,7 @@ function content_64a9b9a4b5bc50_61001285 (Smarty_Internal_Template $_smarty_tpl)
 
           <li><a class="upravljanjePoslovima" href="upravljanjePoslovima.php">Upravljanje poslovima</a></li>
           <li><a class="kreiranjeZadataka" href="kreiranjeZadataka.php">Kreiranje zadataka</a></li>
+          <li><a class="statistika" href="statistika.php">Statistika </a></li>
         <?php }?>
 
 

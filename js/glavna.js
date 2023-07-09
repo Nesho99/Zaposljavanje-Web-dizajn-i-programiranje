@@ -686,5 +686,40 @@ $(document).ready(function () {
     }
 
 
+    if(trenutnoImeDatoteke=="statistika.php"){
+        $(".statistika").addClass("aktivna")
+        const zaglavljaZadatci = [
+            { naziv: "Korisniko ime", svojstvo: "korisnickoIme" },
+            { naziv: "Riješeni zadatci", svojstvo: "rijeseni" },
+            { naziv: "Neriješeni zadatci", svojstvo: "nerijeseni" },
+            
+
+
+        ];
+
+
+        const tablicaZadatci = new Tablica(zaglavljaZadatci, "#tablicaZadatci");
+        tablicaZadatci.dohvatiPodatke("api/statistika/zadatci.php");
+        tablicaZadatci.ispisTablice();
+
+        const zaglavljaDolasci = [
+            { naziv: "Korisniko ime", svojstvo: "zaposlenik" },
+            { naziv: "Broj dolazaka", svojstvo: "dolazak" },
+         
+            
+
+
+        ];
+
+
+        const tablicaDolasci = new Tablica(zaglavljaDolasci, "#tablicaDolasci");
+        tablicaDolasci.dohvatiPodatke("api/statistika/dolasci.php");
+        tablicaDolasci.ispisTablice();
+
+
+
+    }
+
+
 }
 );

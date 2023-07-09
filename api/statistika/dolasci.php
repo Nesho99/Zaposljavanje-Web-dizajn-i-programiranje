@@ -19,7 +19,6 @@ $upit = $qb->select(["zaposlenik.korisnickoIme as zaposlenik","COUNT(datum) as d
 ->join("korisnik as zaposlenik","dolazak.zaposlenik=zaposlenik.id")
 ->groupBy("zaposlenik.id")
 ->getQuery();
-print_r($upit);
 $rezultat=$baza->selectDB($upit);
 $dolazak=array();
 

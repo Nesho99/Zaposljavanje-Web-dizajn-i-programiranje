@@ -56,10 +56,16 @@ class QueryBuilder {
         return $this;
     }
 
-    public function orderBy($field, $direction = 'ASC') {
-        $this->query .= ' ORDER BY ' . $field . ' ' . strtoupper($direction);
+    public function orderBy($fields, $direction = 'ASC') {
+        if (is_array($fields)) {
+            $orderByFields = implode(', ', $fields);
+            $this->query .= ' ORDER BY ' . $orderByFields . ' ' . strtoupper($direction);
+        } else {
+            $this->query .= ' ORDER BY ' . $fields . ' ' . strtoupper($direction);
+        }
         return $this;
     }
+    
 
     public function limit($number) {
         $this->query .= ' LIMIT ' . $number;

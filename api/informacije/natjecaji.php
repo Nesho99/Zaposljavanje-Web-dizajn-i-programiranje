@@ -21,9 +21,9 @@ END as status"
 ->from("natjecaj as n")
 ->join("poduzece as p","p.id=n.poduzece");
 
-if(isset($_POST["od"]) and isset($_POST["do"])){
-    $od=$_POST["od"];
-    $do=$_POST["do"];
+if(isset($_REQUEST["od"]) and isset($_REQUEST["do"])){
+    $od=$_REQUEST["od"];
+    $do=$_REQUEST["do"];
     $upit=$upit->where(["'$od'<= n.datumVrijemePocetak","'$do'>=  n.datumVrijemeKraj"]);
 }
 

@@ -119,7 +119,7 @@ $(document).ready(function () {
     console.log("document loaded");
 
 
-    if (trenutnoImeDatoteke == "index.php") {
+    if (trenutnoImeDatoteke == "index.php" || trenutnoImeDatoteke == "") {
         $(".naslovna").addClass("aktivna");
 
         $.ajax({
@@ -128,13 +128,84 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (data) {
                 console.table(data);
-              
+
             },
             error: function (error) {
 
                 console.error(error);
             }
         })
+
+        const zaglavljaNatjecaji = [
+            { naziv: "Natječaj", svojstvo: "naziv" },
+            { naziv: "Opis", svojstvo: "opis" },
+            { naziv: "Početak", svojstvo: "datumVrijemePocetak" },
+            { naziv: "Kraj", svojstvo: "datumVrijemeKraj" },
+            { naziv: "Tvrtka", svojstvo: "ime" },
+            { naziv: "Status", svojstvo: "status" }
+
+        ];
+
+        const tablicaNatjecajiInfo = new Tablica(zaglavljaNatjecaji, "#natjecaji");
+        tablicaNatjecajiInfo.dohvatiPodatke("api/informacije/natjecaji.php", "post");
+        tablicaNatjecajiInfo.ispisTablice();
+        $("#filtrirajNatjecaj").on("click", function () {
+            if ($("#od").val() != "" && $("do").val() != "") {
+                argumenti = {
+                    od: $("#od").val(),
+                    do: $("#do").val()
+                };
+                tablicaNatjecajiInfo.dohvatiPodatke("api/informacije/natjecaji.php", "post",argumenti);
+                tablicaNatjecajiInfo.ispisTablice();
+
+
+            }else{
+                tablicaNatjecajiInfo.dohvatiPodatke("api/informacije/natjecaji.php", "post");
+                tablicaNatjecajiInfo.ispisTablice();
+            }
+
+        });
+
+        const zaglavljaZaposlenici = [
+            { naziv: "Natječaj", svojstvo: "ime" },
+            { naziv: "Prezime", svojstvo: "prezime" },
+            { naziv: "Tvrtka", svojstvo: "poduzece"}
+        ];
+
+        const tablicaZaposleniciiInfo = new Tablica(zaglavljaZaposlenici, "#zaposlenici");
+        tablicaZaposleniciiInfo.dohvatiPodatke("api/informacije/zaposlenici.php", "post");
+        tablicaZaposleniciiInfo.ispisTablice();
+
+        $("#filtrirajZaposlenika").on("click", function () {
+            argumenti={}
+            if($("#pretrazi").val()!=""){
+                argumenti["pretrazi"]=$("#pretrazi").val()
+            }
+
+            if($("#smjer").val()!=""){
+                argumenti["smjer"]=$("#smjer").val()
+            }
+            tablicaZaposleniciiInfo.dohvatiPodatke("api/informacije/zaposlenici.php", "post",argumenti);
+            tablicaZaposleniciiInfo.ispisTablice();
+    
+
+            
+            
+
+        });
+
+        
+
+
+
+
+
+
+
+
+
+
+
     }
 
     if (trenutnoImeDatoteke == "registracija.php") {
@@ -599,7 +670,7 @@ $(document).ready(function () {
         $(".listaPoslova").addClass("aktivna");
     }
 
-    if(trenutnoImeDatoteke=="kreiranjeZadataka.php"){
+    if (trenutnoImeDatoteke == "kreiranjeZadataka.php") {
         $(".kreiranjeZadataka").addClass("aktivna")
 
         const zaglavlja = [
@@ -609,7 +680,7 @@ $(document).ready(function () {
             { naziv: "Datum", svojstvo: "dan" },
             { naziv: "Zaposlenik", svojstvo: "zaposlenik" },
             { naziv: "Ocjena", svojstvo: "ocjena" },
-            {naziv:"Opis riješenaja", svojstvo:"opisRijesenja"}
+            { naziv: "Opis riješenaja", svojstvo: "opisRijesenja" }
 
 
         ];
@@ -645,7 +716,7 @@ $(document).ready(function () {
         });
 
     }
-    if(trenutnoImeDatoteke=="zadatciZaposlenika.php"){
+    if (trenutnoImeDatoteke == "zadatciZaposlenika.php") {
         $(".zadatciZaposlenika").addClass("aktivna");
         const zaglavlja = [
             { naziv: "ID", svojstvo: "id" },
@@ -654,7 +725,7 @@ $(document).ready(function () {
             { naziv: "Datum", svojstvo: "dan" },
             { naziv: "Zaposlenik", svojstvo: "zaposlenik" },
             { naziv: "Ocjena", svojstvo: "ocjena" },
-            {naziv:"Opis riješenaja", svojstvo:"opisRijesenja"}
+            { naziv: "Opis riješenaja", svojstvo: "opisRijesenja" }
 
 
         ];
@@ -665,34 +736,34 @@ $(document).ready(function () {
         tablicaZadatci.ispisTablice();
 
         $("#posaljiDolazak").on("click", function () {
-          
+
             posaljiNepraznaPolja("/api/dolasci/kreiraj.php", "dolasci")
         });
 
         $("#posaljiZadatak").on("click", function () {
-          
+
             posaljiNepraznaPolja("/api/zadatci/rijesi.php", "zadatak")
             tablicaZadatci.dohvatiPodatke("api/zadatci/dohvatiZadatkeZaposlenika.php");
             tablicaZadatci.ispisTablice();
         });
 
 
-        
 
-        
 
-        
+
+
+
 
     }
 
 
-    if(trenutnoImeDatoteke=="statistika.php"){
+    if (trenutnoImeDatoteke == "statistika.php") {
         $(".statistika").addClass("aktivna")
         const zaglavljaZadatci = [
             { naziv: "Korisniko ime", svojstvo: "korisnickoIme" },
             { naziv: "Riješeni zadatci", svojstvo: "rijeseni" },
             { naziv: "Neriješeni zadatci", svojstvo: "nerijeseni" },
-            
+
 
 
         ];
@@ -705,8 +776,8 @@ $(document).ready(function () {
         const zaglavljaDolasci = [
             { naziv: "Korisniko ime", svojstvo: "zaposlenik" },
             { naziv: "Broj dolazaka", svojstvo: "dolazak" },
-         
-            
+
+
 
 
         ];

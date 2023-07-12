@@ -790,7 +790,24 @@ $(document).ready(function () {
 
 
     }
-
+    if(trenutnoImeDatoteke== "postavke.php"){
+        $(".postavke").addClass("aktivna");
+    }
+    $("#vrijeme").click(function() {
+    
+        // AJAX call
+        $.ajax({
+          url: '/api/pomakVremena.php',
+          type: 'GET',
+          dataType: 'json',
+          success: function(data) {
+            console.table(data);
+          },
+          error: function(error) {
+            console.error(error);
+          }
+        });
+      });
 
 }
 );

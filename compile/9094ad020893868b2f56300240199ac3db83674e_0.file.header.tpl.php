@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-07-09 12:53:59
+/* Smarty version 4.3.1, created on 2023-07-12 20:39:44
   from 'C:\xampp\htdocs\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_64aa91c7108ca5_97709766',
+  'unifunc' => 'content_64aef3703f7616_40005198',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9094ad020893868b2f56300240199ac3db83674e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\templates\\header.tpl',
-      1 => 1688899959,
+      1 => 1689187180,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_64aa91c7108ca5_97709766 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64aef3703f7616_40005198 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -66,6 +66,7 @@ function content_64aa91c7108ca5_97709766 (Smarty_Internal_Template $_smarty_tpl)
           <li><a class="poduzeca" href="poduzeca.php">Poduzeća</a></li>
           <li><a class="korisnici" href="korisnici.php">Korisnici</a></li>
           <li><a class="dnevnik" href="dnevnik.php">Dnevnik</a></li>
+          <li><a class="postave" href="postavKe.php">Postavke</a></li>
 
 
         <?php }?>

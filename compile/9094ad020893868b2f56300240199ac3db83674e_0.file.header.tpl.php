@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-07-12 20:39:44
+/* Smarty version 4.3.1, created on 2023-07-12 22:52:54
   from 'C:\xampp\htdocs\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_64aef3703f7616_40005198',
+  'unifunc' => 'content_64af12a674f009_16624935',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9094ad020893868b2f56300240199ac3db83674e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\templates\\header.tpl',
-      1 => 1689187180,
+      1 => 1689194895,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_64aef3703f7616_40005198 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64af12a674f009_16624935 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -30,10 +30,10 @@ function content_64aef3703f7616_40005198 (Smarty_Internal_Template $_smarty_tpl)
  src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"><?php echo '</script'; ?>
 >
   <?php echo '<script'; ?>
- src="../js/glavna.js"><?php echo '</script'; ?>
+ src="js/glavna.js"><?php echo '</script'; ?>
 >
   <?php echo '<script'; ?>
- src="../js/tablica.js"><?php echo '</script'; ?>
+ src="js/tablica.js"><?php echo '</script'; ?>
 >
   <?php echo '<script'; ?>
  src="https://www.google.com/recaptcha/api.js" async defer><?php echo '</script'; ?>

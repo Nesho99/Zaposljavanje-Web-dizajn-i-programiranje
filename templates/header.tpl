@@ -4,8 +4,8 @@
 <head>
   <link rel="stylesheet" href="stilovi.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="../js/glavna.js"></script>
-  <script src="../js/tablica.js"></script>
+  <script src="js/glavna.js"></script>
+  <script src="js/tablica.js"></script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <title>{$naslov}</title>
 </head>
@@ -33,7 +33,7 @@
           <li><a class="poduzeca" href="poduzeca.php">Poduzeća</a></li>
           <li><a class="korisnici" href="korisnici.php">Korisnici</a></li>
           <li><a class="dnevnik" href="dnevnik.php">Dnevnik</a></li>
-          <li><a class="postave" href="postavKe.php">Postavke</a></li>
+          <li><a class="postave" href="postavke.php">Postavke</a></li>
 
 
         {/if}

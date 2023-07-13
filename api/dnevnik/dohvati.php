@@ -9,12 +9,13 @@ $baza->spojiDB();
 
 
 $qb = new QueryBuilder();
-$upit = $qb->select(["dnevnik.id","datumVrijeme","korisnik.korisnickoIme as korisnik","tip","upit","radnja"])->from("dnevnik")->join("korisnik","korisnik.id=dnevnik.korisnik")->orderBy("datumVrijeme","DESC");
+$upit = $qb->select(["dnevnik.id","datumVrijeme","korisnik.korisnickoIme as korisnik","tip","upit","radnja"])->from("dnevnik")->join("korisnik","korisnik.id=dnevnik.korisnik");
 if(isset($_POST["od"]) and isset($_POST["od"])){
     $od= $_POST["od"];
     $do=$_POST["do"];
-    $upit->where("datumVrijeme >'{$od}' AND datumVrijeme <'{$do}'");
+    $upit=$upit->where("datumVrijeme >'{$od}' AND datumVrijeme <'{$do}'");
 }
+$upit= $upit->orderBy("datumVrijeme","DESC");
 
 $upit= $upit->getQuery();
 

@@ -2,7 +2,7 @@
 require_once("../../pomocne/Sesija.class.php");
 require_once("../../pomocne/baza.class.php");
 require_once("../../pomocne/QueryBuilder.class.php");
-require_once("../../Modeli/Natjecaj.class.php");
+require_once("../../modeli/Natjecaj.class.php");
 require_once("../../pomocne/VirtualnoVrijeme.class.php");
 require_once("../../pomocne/datumi.lib.php");
 

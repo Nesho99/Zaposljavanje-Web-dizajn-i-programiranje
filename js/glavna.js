@@ -123,7 +123,7 @@ $(document).ready(function () {
         $(".naslovna").addClass("aktivna");
 
         $.ajax({
-            url: '/api/natjecaji/dodjeli.php',
+            url: './api/natjecaji/dodjeli.php',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -147,7 +147,7 @@ $(document).ready(function () {
         ];
 
         const tablicaNatjecajiInfo = new Tablica(zaglavljaNatjecaji, "#natjecaji");
-        tablicaNatjecajiInfo.dohvatiPodatke("api/informacije/natjecaji.php", "post");
+        tablicaNatjecajiInfo.dohvatiPodatke("./api/informacije/natjecaji.php", "post");
         tablicaNatjecajiInfo.ispisTablice();
         $("#filtrirajNatjecaj").on("click", function () {
             if ($("#od").val() != "" && $("do").val() != "") {
@@ -155,12 +155,12 @@ $(document).ready(function () {
                     od: $("#od").val(),
                     do: $("#do").val()
                 };
-                tablicaNatjecajiInfo.dohvatiPodatke("api/informacije/natjecaji.php", "post",argumenti);
+                tablicaNatjecajiInfo.dohvatiPodatke("./api/informacije/natjecaji.php", "post",argumenti);
                 tablicaNatjecajiInfo.ispisTablice();
 
 
             }else{
-                tablicaNatjecajiInfo.dohvatiPodatke("api/informacije/natjecaji.php", "post");
+                tablicaNatjecajiInfo.dohvatiPodatke("./api/informacije/natjecaji.php", "post");
                 tablicaNatjecajiInfo.ispisTablice();
             }
 
@@ -173,7 +173,7 @@ $(document).ready(function () {
         ];
 
         const tablicaZaposleniciiInfo = new Tablica(zaglavljaZaposlenici, "#zaposlenici");
-        tablicaZaposleniciiInfo.dohvatiPodatke("api/informacije/zaposlenici.php", "post");
+        tablicaZaposleniciiInfo.dohvatiPodatke("./api/informacije/zaposlenici.php", "post");
         tablicaZaposleniciiInfo.ispisTablice();
 
         $("#filtrirajZaposlenika").on("click", function () {
@@ -185,7 +185,7 @@ $(document).ready(function () {
             if($("#smjer").val()!=""){
                 argumenti["smjer"]=$("#smjer").val()
             }
-            tablicaZaposleniciiInfo.dohvatiPodatke("api/informacije/zaposlenici.php", "post",argumenti);
+            tablicaZaposleniciiInfo.dohvatiPodatke("./api/informacije/zaposlenici.php", "post",argumenti);
             tablicaZaposleniciiInfo.ispisTablice();
     
 
@@ -212,7 +212,7 @@ $(document).ready(function () {
         function korisnikPostoji() {
             var korisnik = $("#kime").val();
             $.ajax({
-                url: `../api/postojiKorisnik.php?korisnik=${korisnik}`,
+                url: `./api/postojiKorisnik.php?korisnik=${korisnik}`,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -350,7 +350,7 @@ $(document).ready(function () {
         $("#zaboravljena").on("click", function () {
             var korisnik = $("#kime").val();
             $.ajax({
-                url: `../api/novaLozinka.php?korisnik=${korisnik}`,
+                url: `./api/novaLozinka.php?korisnik=${korisnik}`,
                 type: 'GET',
                 success: function (response) {
                     alert("Nova lozinka poslana na mail");
@@ -379,12 +379,12 @@ $(document).ready(function () {
         ];
 
         const tablicaPoduzeca = new Tablica(zaglavlja, "#tablicaPoduzeca");
-        tablicaPoduzeca.dohvatiPodatke("/api/poduzeca/dohvati.php");
+        tablicaPoduzeca.dohvatiPodatke("./api/poduzeca/dohvati.php");
         tablicaPoduzeca.ispisTablice();
 
 
         $.ajax({
-            url: '/api/uloge/dohvatiModeratore.php',
+            url: './api/uloge/dohvatiModeratore.php',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -402,19 +402,19 @@ $(document).ready(function () {
 
         $("#posalji").on("click", function () {
             if ($("#id").val() == "") {
-                posaljiNepraznaPolja("/api/poduzeca/kreiraj.php", "formaPoduzeca")
+                posaljiNepraznaPolja("./api/poduzeca/kreiraj.php", "formaPoduzeca")
 
             }
             else {
-                posaljiNepraznaPolja("/api/poduzeca/uredi.php", "formaPoduzeca")
+                posaljiNepraznaPolja("./api/poduzeca/uredi.php", "formaPoduzeca")
 
             }
-            tablicaPoduzeca.dohvatiPodatke("/api/poduzeca/dohvati.php");
+            tablicaPoduzeca.dohvatiPodatke("./api/poduzeca/dohvati.php");
             tablicaPoduzeca.ispisTablice();
         });
 
         $.ajax({
-            url: '/api/uloge/dohvatiKorisnike.php',
+            url: './api/uloge/dohvatiKorisnike.php',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -429,11 +429,11 @@ $(document).ready(function () {
         });
 
         $("#posaljiModerator").on("click", function () {
-            posaljiNepraznaPolja("/api/uloge/dajModeratora.php", "formaModeratora")
+            posaljiNepraznaPolja("./api/uloge/dajModeratora.php", "formaModeratora")
 
 
             $.ajax({
-                url: '/api/uloge/dohvatiKorisnike.php',
+                url: './api/uloge/dohvatiKorisnike.php',
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -449,7 +449,7 @@ $(document).ready(function () {
             });
 
             $.ajax({
-                url: '/api/uloge/dohvatiModeratore.php',
+                url: './api/uloge/dohvatiModeratore.php',
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -535,7 +535,7 @@ $(document).ready(function () {
                 success: function (success) {
                     console.log(success);
                     osvjeziPadajuceBlokiranje();
-                    tablicaKorisnika.dohvatiPodatke("/api/korisnici/dohvati.php");
+                    tablicaKorisnika.dohvatiPodatke("./api/korisnici/dohvati.php");
                     tablicaKorisnika.ispisTablice();
 
                 },
@@ -549,12 +549,12 @@ $(document).ready(function () {
         $("#odblokiraj").on("click", function () {
             var odblokirajid = $("#blokirani").val();
             $.ajax({
-                url: '/api/korisnici/deblokiraj.php?id=' + odblokirajid,
+                url: './api/korisnici/deblokiraj.php?id=' + odblokirajid,
                 type: 'GET',
                 success: function (success) {
                     console.log(success);
                     osvjeziPadajuceBlokiranje();
-                    tablicaKorisnika.dohvatiPodatke("/api/korisnici/dohvati.php");
+                    tablicaKorisnika.dohvatiPodatke("../api/korisnici/dohvati.php");
                     tablicaKorisnika.ispisTablice();
 
                 },
@@ -592,7 +592,7 @@ $(document).ready(function () {
 
 
         const tablicaDnevnik = new Tablica(zaglavlja, "#tablicaDnevnik");
-        tablicaDnevnik.dohvatiPodatke("/api/dnevnik/dohvati.php");
+        tablicaDnevnik.dohvatiPodatke("./api/dnevnik/dohvati.php");
         tablicaDnevnik.ispisTablice();
         $("#pretrazi").on('click', function () {
             var od = $("#od").val();
@@ -605,7 +605,7 @@ $(document).ready(function () {
 
 
 
-            tablicaDnevnik.dohvatiPodatke('/api/dnevnik/dohvati.php', tipZahtjeva = "post", argumenti);
+            tablicaDnevnik.dohvatiPodatke('./api/dnevnik/dohvati.php', tipZahtjeva = "post", argumenti);
             tablicaDnevnik.osvjeziTablicu();
 
         })
@@ -629,12 +629,12 @@ $(document).ready(function () {
 
 
         const tablicaNatjecaji = new Tablica(zaglavlja, "#tablicaNatjecaji");
-        tablicaNatjecaji.dohvatiPodatke("/api/natjecaji/dohvati.php");
+        tablicaNatjecaji.dohvatiPodatke("./api/natjecaji/dohvati.php");
         tablicaNatjecaji.ispisTablice();
 
 
         $.ajax({
-            url: '/api/poduzeca/dohvatiPoduzecaModeratora.php',
+            url: './api/poduzeca/dohvatiPoduzecaModeratora.php',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -649,14 +649,14 @@ $(document).ready(function () {
 
         $("#posalji").on("click", function () {
             if ($("#id").val() == "") {
-                posaljiNepraznaPolja("/api/natjecaji/kreiraj.php", "formaUpavljanjeNatjecajima")
+                posaljiNepraznaPolja("./api/natjecaji/kreiraj.php", "formaUpavljanjeNatjecajima")
 
             }
             else {
-                posaljiNepraznaPolja("/api/natjecaji/uredi.php", "formaUpavljanjeNatjecajima")
+                posaljiNepraznaPolja("./api/natjecaji/uredi.php", "formaUpavljanjeNatjecajima")
 
             }
-            tablicaNatjecaji.dohvatiPodatke("/api/natjecaji/dohvati.php");
+            tablicaNatjecaji.dohvatiPodatke("./api/natjecaji/dohvati.php");
             tablicaNatjecaji.ispisTablice();
         });
 
@@ -687,10 +687,10 @@ $(document).ready(function () {
 
 
         const tablicaNatjecaji = new Tablica(zaglavlja, "#tablicaZadatci");
-        tablicaNatjecaji.dohvatiPodatke("/api/zadatci/dohvatiZadatkeModeratora.php");
+        tablicaNatjecaji.dohvatiPodatke("./api/zadatci/dohvatiZadatkeModeratora.php");
         tablicaNatjecaji.ispisTablice();
         $.ajax({
-            url: '/api/zadatci/dohvatiZaposlenikeModeratora.php',
+            url: './api/zadatci/dohvatiZaposlenikeModeratora.php',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -704,14 +704,14 @@ $(document).ready(function () {
         })
         $("#posalji").on("click", function () {
             if ($("#id").val() == "") {
-                posaljiNepraznaPolja("/api/zadatci/kreiraj.php", "upravljanjeZadatcima")
+                posaljiNepraznaPolja("./api/zadatci/kreiraj.php", "upravljanjeZadatcima")
 
             }
             else {
-                posaljiNepraznaPolja("/api/zadatci/uredi.php", "upravljanjeZadatcima")
+                posaljiNepraznaPolja("./api/zadatci/uredi.php", "upravljanjeZadatcima")
 
             }
-            tablicaNatjecaji.dohvatiPodatke("/api/zadatci/dohvatiZadatkeModeratora.php");
+            tablicaNatjecaji.dohvatiPodatke("./api/zadatci/dohvatiZadatkeModeratora.php");
             tablicaNatjecaji.ispisTablice();
         });
 
@@ -732,18 +732,18 @@ $(document).ready(function () {
 
 
         const tablicaZadatci = new Tablica(zaglavlja, "#tablicaZadatci");
-        tablicaZadatci.dohvatiPodatke("api/zadatci/dohvatiZadatkeZaposlenika.php");
+        tablicaZadatci.dohvatiPodatke("./api/zadatci/dohvatiZadatkeZaposlenika.php");
         tablicaZadatci.ispisTablice();
 
         $("#posaljiDolazak").on("click", function () {
 
-            posaljiNepraznaPolja("/api/dolasci/kreiraj.php", "dolasci")
+            posaljiNepraznaPolja("./api/dolasci/kreiraj.php", "dolasci")
         });
 
         $("#posaljiZadatak").on("click", function () {
 
-            posaljiNepraznaPolja("/api/zadatci/rijesi.php", "zadatak")
-            tablicaZadatci.dohvatiPodatke("api/zadatci/dohvatiZadatkeZaposlenika.php");
+            posaljiNepraznaPolja("./api/zadatci/rijesi.php", "zadatak")
+            tablicaZadatci.dohvatiPodatke("./api/zadatci/dohvatiZadatkeZaposlenika.php");
             tablicaZadatci.ispisTablice();
         });
 
@@ -770,7 +770,7 @@ $(document).ready(function () {
 
 
         const tablicaZadatci = new Tablica(zaglavljaZadatci, "#tablicaZadatci");
-        tablicaZadatci.dohvatiPodatke("api/statistika/zadatci.php");
+        tablicaZadatci.dohvatiPodatke("./api/statistika/zadatci.php");
         tablicaZadatci.ispisTablice();
 
         const zaglavljaDolasci = [
@@ -784,7 +784,7 @@ $(document).ready(function () {
 
 
         const tablicaDolasci = new Tablica(zaglavljaDolasci, "#tablicaDolasci");
-        tablicaDolasci.dohvatiPodatke("api/statistika/dolasci.php");
+        tablicaDolasci.dohvatiPodatke("./api/statistika/dolasci.php");
         tablicaDolasci.ispisTablice();
 
 
@@ -797,7 +797,7 @@ $(document).ready(function () {
     
         // AJAX call
         $.ajax({
-          url: '/api/pomakVremena.php',
+          url: './api/pomakVremena.php',
           type: 'GET',
           dataType: 'json',
           success: function(data) {

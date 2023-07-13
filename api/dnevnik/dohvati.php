@@ -2,7 +2,7 @@
 require_once("../../pomocne/Sesija.class.php");
 require_once("../../pomocne/baza.class.php");
 require_once("../../pomocne/QueryBuilder.class.php");
-require_once("../../Modeli/Dnevnik.class.php");
+require_once("../../modeli/Dnevnik.class.php");
 
 $baza = new Baza();
 $baza->spojiDB();

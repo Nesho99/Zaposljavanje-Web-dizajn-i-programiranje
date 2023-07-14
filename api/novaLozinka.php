@@ -49,6 +49,12 @@ $upit = "UPDATE  `korisnik` SET `lozinka`= '{$lozinka}' ,`sol`= '{$sol}', `hashL
 
 $baza->updateDB($upit);
 
+
+$to = $email;
+$naslov = "Nova lozinka";
+$poruka = "Nova lozinka: " .$lozinka;
+$zaglavlje = "From: sender@example.com\r\n";
+
 $upit = "SELECT * FROM `korisnik` WHERE `korisnickoIme`= '{$korisnickoIme}'";
 $rezultat = $baza->selectDB($upit);
 $Korisnik = $rezultat->fetch_object("Korisnik");
@@ -56,10 +62,6 @@ $email= $Korisnik->email;
 mail($to, $naslov, $poruka, $zaglavlje);
 
 
-$to = $email;
-$naslov = "Nova lozinka";
-$poruka = "Nova lozinka: " .$lozinka;
-$zaglavlje = "From: sender@example.com\r\n";
 
 
 

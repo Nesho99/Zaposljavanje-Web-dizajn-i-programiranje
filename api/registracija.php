@@ -123,7 +123,7 @@ $baza->zatvoriDB();
 //Posalji mail
 $server = $_SERVER['HTTP_HOST'];
 
-$putanja = "{$server}/api/aktiviraj.php?link={$link}";
+$putanja = "{$server}/WebDiP/2022_projekti/WebDiP2022x009/api/aktiviraj.php?link={$link}";
 
 $to = $email;
 $naslov = "Link za aktivaciju";

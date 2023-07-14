@@ -488,11 +488,11 @@ $(document).ready(function () {
         ];
 
         const tablicaKorisnika = new Tablica(zaglavlja, "#tablicaKorisnici");
-        tablicaKorisnika.dohvatiPodatke("/api/korisnici/dohvati.php");
+        tablicaKorisnika.dohvatiPodatke("./api/korisnici/dohvati.php");
         tablicaKorisnika.ispisTablice();
         function osvjeziPadajuceBlokiranje() {
             $.ajax({
-                url: '/api/korisnici/dohvatiAktivne.php',
+                url: './api/korisnici/dohvatiAktivne.php',
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -530,7 +530,7 @@ $(document).ready(function () {
         $("#blokiraj").on("click", function () {
             var blokirajid = $("#odblokirani").val();
             $.ajax({
-                url: '/api/korisnici/blokiraj.php?id=' + blokirajid,
+                url: './api/korisnici/blokiraj.php?id=' + blokirajid,
                 type: 'GET',
                 success: function (success) {
                     console.log(success);

@@ -506,7 +506,7 @@ $(document).ready(function () {
                 }
             });
             $.ajax({
-                url: '/api/korisnici/dohvatiBlokirane.php',
+                url: './api/korisnici/dohvatiBlokirane.php',
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {

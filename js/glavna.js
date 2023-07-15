@@ -117,6 +117,9 @@ function pretvoriUSQLDatumVrijeme(isoDatumVrijeme) {
 
 $(document).ready(function () {
     console.log("document loaded");
+    $.ajaxSetup({
+        cache: false
+    })
 
 
     if (trenutnoImeDatoteke == "index.php" || trenutnoImeDatoteke == "") {

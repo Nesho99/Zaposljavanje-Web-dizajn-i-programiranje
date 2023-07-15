@@ -1,3 +1,6 @@
+$.ajaxSetup({
+  cache: false
+})
 class Tablica {
   constructor(zaglavlja, kontenjer) {
     this.podaci = [];
